@@ -72,11 +72,11 @@ msgstr "Cena sezónní permanentky"
 msgid "Minimum price for generating a seasonal voucher instead of 3-day vouchers"
 msgstr "Minimální cena pro generování sezónního poukazu místo 3denních poukazů"
 
-msgid "Default Region ID"
-msgstr "Výchozí ID regionu"
+msgid "Region ID"
+msgstr "ID regionu"
 
-msgid "Default region ID for voucher generation (1-99)"
-msgstr "Výchozí ID regionu pro generování poukazů (1-99)"
+msgid "Region ID for voucher generation"
+msgstr "ID regionu pro generování poukazů (1-99)"
 
 msgid "Enable Plugin"
 msgstr "Povolit modul"
