@@ -61,7 +61,7 @@ msgid "Select products that trigger Nabezky integration"
 msgstr "Vyberte produkty, ktoré spustia Na bežky integráciu"
 
 msgid "Select WooCommerce products that should trigger Nabezky voucher generation when purchased"
-msgstr "Vyberte WooCommerce produkty, ktoré by mali spustiť generovanie Na bežky poukazov pri kúpe"
+msgstr "Vyberte si WooCommerce produkty, ktoré by mali spustiť generovanie Na bežky poukazov pri kúpe"
 
 msgid "No WooCommerce products found. Please create some products first."
 msgstr "Neboli nájdené žiadne WooCommerce produkty. Najprv vytvorte nejaké produkty."
