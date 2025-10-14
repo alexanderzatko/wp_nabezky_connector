@@ -733,7 +733,7 @@ class WP_Nabezky_Connector {
         $map_url = $options['nabezky_map_url'];
         
         echo '<div class="nabezky-voucher-info" style="background: #f0f8ff; border: 2px solid #007cba; padding: 20px; margin: 20px 0; border-radius: 5px;">';
-        echo '<h3>' . __('Yours Na bežky! map access information', 'wp-nabezky-connector') . '</h3>';
+        echo '<h3>' . __('Your Na bežky! map access information', 'wp-nabezky-connector') . '</h3>';
         echo '<p>' . __('As a bonus with your purchase, you now have access to the premium Na bežky map with cross-country trails grooming status and other useful information. You can access the map immediately using the button below, or save the details from the email we sent you for later use.', 'wp-nabezky-connector') . '</p>';
         
         // Check if user is registered in Nabezky

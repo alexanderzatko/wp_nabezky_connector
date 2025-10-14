@@ -50,7 +50,7 @@ msgstr ""
 msgid "URL where Nabezky will send voucher information (automatically generated)"
 msgstr ""
 
-msgid "Nabezky Products"
+msgid "Select Products"
 msgstr ""
 
 msgid "Select products that trigger Nabezky integration"

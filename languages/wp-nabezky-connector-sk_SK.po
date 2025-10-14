@@ -31,13 +31,13 @@ msgid "Settings saved successfully!"
 msgstr "Nastavenia boli úspešne uložené!"
 
 msgid "Nabezky API URL"
-msgstr "Nabezky API URL"
+msgstr "Na bežky API URL"
 
 msgid "Base URL for the Nabezky API (e.g., https://nabezky.sk)"
-msgstr "Základná URL pre Nabezky API (napr. https://nabezky.sk)"
+msgstr "Základná URL pre Na bežky API (napr. https://nabezky.sk)"
 
 msgid "Nabezky Map URL"
-msgstr "Nabezky Mapa URL"
+msgstr "Na bežky Mapa URL"
 
 msgid "URL where customers will access the map (can be mapa.nabezky.sk or embedded iframe URL)"
 msgstr "URL, kde si zákazníci budú môcť zobraziť mapu (môže byť mapa.nabezky.sk alebo vložená iframe URL)"
@@ -46,22 +46,22 @@ msgid "Access Token"
 msgstr "Prístupový token"
 
 msgid "Access token for authenticating with Nabezky API (communicated out-of-band)"
-msgstr "Prístupový token pre autentifikáciu s Nabezky API (komunikovaný mimo pásma)"
+msgstr "Prístupový token pre autentifikáciu s Na bežky API (komunikovaný mimo pásma)"
 
 msgid "Callback URL"
 msgstr "Callback URL"
 
 msgid "URL where Nabezky will send voucher information (automatically generated)"
-msgstr "URL, kam Nabezky pošle informácie o poukazoch (automaticky generované)"
+msgstr "URL, kam Na bežky pošle informácie o poukazoch (automaticky generované)"
 
-msgid "Nabezky Products"
-msgstr "Nabezky Produkty"
+msgid "Select Products"
+msgstr "Vyberte produkty"
 
 msgid "Select products that trigger Nabezky integration"
-msgstr "Vyberte produkty, ktoré spustia Nabezky integráciu"
+msgstr "Vyberte produkty, ktoré spustia Na bežky integráciu"
 
 msgid "Select WooCommerce products that should trigger Nabezky voucher generation when purchased"
-msgstr "Vyberte WooCommerce produkty, ktoré by mali spustiť generovanie Nabezky poukazov pri kúpe"
+msgstr "Vyberte WooCommerce produkty, ktoré by mali spustiť generovanie Na bežky poukazov pri kúpe"
 
 msgid "No WooCommerce products found. Please create some products first."
 msgstr "Neboli nájdené žiadne WooCommerce produkty. Najprv vytvorte nejaké produkty."
@@ -82,7 +82,7 @@ msgid "Enable Plugin"
 msgstr "Povoliť modul"
 
 msgid "Enable the Nabezky connector"
-msgstr "Povoliť Nabezky pripojovací modul"
+msgstr "Povoliť Na bežky pripojovací modul"
 
 msgid "Enable automatic voucher generation when WooCommerce orders are completed"
 msgstr "Povoliť automatické generovanie poukazov pri dokončení WooCommerce objednávok"
@@ -98,19 +98,19 @@ msgid "How it works"
 msgstr "Ako to funguje"
 
 msgid "Customer completes a WooCommerce order containing configured Nabezky products"
-msgstr "Zákazník dokončí WooCommerce objednávku obsahujúcu nakonfigurované Nabezky produkty"
+msgstr "Zákazník dokončí WooCommerce objednávku obsahujúcu nakonfigurované Na bežky produkty"
 
 msgid "Plugin sends order details to Nabezky API for voucher generation"
-msgstr "Modul pošle detaily objednávky do Nabezky API na generovanie poukazov"
+msgstr "Modul pošle detaily objednávky do Na bežky API na generovanie poukazov"
 
 msgid "Nabezky generates vouchers and sends callback with voucher information"
-msgstr "Nabezky vygeneruje poukazy a pošle callback s informáciami o poukazoch"
+msgstr "Na bežky vygeneruje poukazy a pošle callback s informáciami o poukazoch"
 
 msgid "Customer receives voucher information via email and on the thank you page"
 msgstr "Zákazník dostane informácie o poukazoch e-mailom a na stránke ďakujeme"
 
 msgid "Customer can use voucher numbers to access the Nabezky interactive map"
-msgstr "Zákazník môže použiť čísla poukazov na prístup k interaktívnej Nabezky mape"
+msgstr "Zákazník môže použiť čísla poukazov na prístup k interaktívnej Na bežky mape"
 
 msgid "Voucher Types"
 msgstr "Typy poukazov"
@@ -131,13 +131,13 @@ msgid "Registered User Access:"
 msgstr "Prístup registrovaného používateľa:"
 
 msgid "If customer is registered in Nabezky, they get access to all premium features."
-msgstr "Ak je zákazník registrovaný v Nabezky, získa prístup ku všetkým prémiovým funkciám."
+msgstr "Ak je zákazník registrovaný v Na bežky, získa prístup ku všetkým prémiovým funkciám."
 
 msgid "API Integration"
 msgstr "API integrácia"
 
 msgid "This plugin integrates with Nabezky through a custom API endpoint:"
-msgstr "Tento modul sa integruje s Nabezky cez vlastný API endpoint:"
+msgstr "Tento modul sa integruje s Na bežky cez vlastný API endpoint:"
 
 msgid "Endpoint:"
 msgstr "Endpoint:"
@@ -155,7 +155,7 @@ msgid "API Failure Handling"
 msgstr "Spracovanie zlyhania API"
 
 msgid "If the Nabezky API is unavailable, the plugin will notify both the customer and admin about the technical difficulties. Manual processing will be required to generate vouchers."
-msgstr "Ak je Nabezky API nedostupné, modul upozorní zákazníka aj administrátora na technické problémy. Na generovanie poukazov bude potrebná manuálna spracovanie."
+msgstr "Ak je Na bežky API nedostupné, modul upozorní zákazníka aj administrátora na technické problémy. Na generovanie poukazov bude potrebná manuálna spracovanie."
 
 msgid "Note:"
 msgstr "Poznámka:"
@@ -173,7 +173,7 @@ msgid "Map Access Options"
 msgstr "Možnosti prístupu k mape"
 
 msgid "Configure where customers will access the Nabezky map:"
-msgstr "Nakonfigurujte, kde si zákazníci budú môcť zobraziť Nabezky mapu:"
+msgstr "Nakonfigurujte, kde si zákazníci budú môcť zobraziť Na bežky mapu:"
 
 msgid "Direct Access:"
 msgstr "Priamy prístup:"
@@ -212,13 +212,13 @@ msgid "Create your trail payment products in WooCommerce"
 msgstr "Vytvorte vaše produkty platby za trasy v WooCommerce"
 
 msgid "Configure Nabezky API settings above"
-msgstr "Nakonfigurujte Nabezky API nastavenia vyššie"
+msgstr "Nakonfigurujte Na bežky API nastavenia vyššie"
 
 msgid "Select which products trigger Nabezky integration"
-msgstr "Vyberte, ktoré produkty spustia Nabezky integráciu"
+msgstr "Vyberte, ktoré produkty spustia Na bežky integráciu"
 
 msgid "Obtain access token from Nabezky team"
-msgstr "Získajte prístupový token od Nabezky tímu"
+msgstr "Získajte prístupový token od Na bežky tímu"
 
 msgid "Enable the plugin and test with a purchase"
 msgstr "Povolte modul a otestujte kúpou"
@@ -274,7 +274,7 @@ msgstr "Kliknite pre kopírovanie"
 
 # Email and voucher strings
 msgid "Your Nabezky Map Access"
-msgstr "Váš prístup k Nabezky mape"
+msgstr "Váš prístup k Na bežky mape"
 
 msgid "Thank you for supporting cross-country skiing!"
 msgstr "Ďakujeme za podporu bežeckého lyžovania!"
@@ -292,12 +292,12 @@ msgid "Processing Your Map Access"
 msgstr "Spracovanie vášho prístupu k mape"
 
 msgid "We are processing your Nabezky map access. You will receive an email shortly with your voucher details."
-msgstr "Spracovávame váš prístup k Nabezky mape. Čoskoro dostanete e-mail s detailmi vášho poukazu."
+msgstr "Spracovávame váš prístup k Na bežky mape. Čoskoro dostanete e-mail s detailmi vášho poukazu."
 
 msgid "Checking status..."
 msgstr "Kontrola stavu..."
 
-msgid "Na bežky! map access information"
+msgid "Your Na bežky! map access information"
 msgstr "Informácie o prístupe k Na bežky! mape"
 
 msgid "As a bonus with your purchase, you now have access to the premium Na bežky map with cross-country grooming status and other useful information. You can access the map immediately using the button below, or save the details from the email we sent you for later use."
@@ -307,7 +307,7 @@ msgid "Registered User Bonus!"
 msgstr "Bonus pre registrovaného používateľa!"
 
 msgid "As a nabezky.sk registered user, you have gained access to all premium features including the Nabezky map."
-msgstr "Ako registrovaný používateľ nabezky.sk, získali ste prístup ku všetkým prémiovým funkciám vrátane Nabezky mapy."
+msgstr "Ako registrovaný používateľ nabezky.sk, získali ste prístup ku všetkým prémiovým funkciám vrátane Na bežky mapy."
 
 msgid "Voucher Number:"
 msgstr "Číslo poukazu:"

@@ -102,7 +102,7 @@ if (class_exists('WooCommerce')) {
             
             <tr>
                 <th scope="row">
-                    <label for="nabezky_products"><?php _e('Nabezky Products', 'wp-nabezky-connector'); ?></label>
+                    <label for="nabezky_products"><?php _e('Select Products', 'wp-nabezky-connector'); ?></label>
                 </th>
                 <td>
                     <?php if (!empty($products)): ?>
