@@ -1,6 +1,6 @@
-# WP Nábežky Connector
+# WP Na bežky! Connector
 
-A WordPress plugin to connect with Nábežky services.
+A WordPress plugin to connect with Na bežky! services.
 
 ## Features
 
@@ -14,11 +14,11 @@ A WordPress plugin to connect with Nábežky services.
 
 1. Upload the plugin files to `/wp-content/plugins/wp-nabezky-connector/` directory
 2. Activate the plugin through the 'Plugins' screen in WordPress
-3. Go to Settings > Nábežky Connector to configure the plugin
+3. Go to Settings > Na bežky! Connector to configure the plugin
 
 ## Configuration
 
-1. Navigate to **Settings > Nábežky Connector** in your WordPress admin
+1. Navigate to **Settings > Na bežky! Connector** in your WordPress admin
 2. Enter your API key and API URL
 3. Enable the plugin
 4. Test the connection to verify your settings
@@ -97,9 +97,9 @@ define('WP_DEBUG_DISPLAY', false);
 
 ## API Integration
 
-The plugin is set up to integrate with Nábežky services. You'll need to:
+The plugin is set up to integrate with Na bežky! services. You'll need to:
 
-1. Obtain API credentials from Nábežky
+1. Obtain API credentials from Na bežky!
 2. Configure the API endpoint URL
 3. Implement specific API calls based on your requirements
 
