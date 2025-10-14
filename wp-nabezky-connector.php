@@ -329,7 +329,7 @@ class WP_Nabezky_Connector {
         $order = wc_get_order($order_id);
         if ($order) {
             $nabezky_products = $this->get_nabezky_products_from_order($order);
-            if (!empty($nabezky_products)) {
+            if (!empty($nabezky_products['items'])) {
                 $this->log_info('Order with Nabezky products status changed', "Order ID: $order_id, Status: $new_status, Products found: " . count($nabezky_products['items']));
             }
         }
@@ -373,9 +373,9 @@ class WP_Nabezky_Connector {
         // Check if order contains configured Nabezky products
         $nabezky_products = $this->get_nabezky_products_from_order($order);
         
-        $this->log_info('Nabezky products check', 'Found products: ' . (empty($nabezky_products) ? 'NO' : 'YES'));
+        $this->log_info('Nabezky products check', 'Found products: ' . (empty($nabezky_products['items']) ? 'NO' : 'YES'));
         
-        if (empty($nabezky_products)) {
+        if (empty($nabezky_products['items'])) {
             $this->log_info('No Nabezky products', 'Skipping Nabezky processing');
             return;
         }
@@ -740,10 +740,18 @@ class WP_Nabezky_Connector {
             return;
         }
         
+        // Check if order contains configured Nabezky products first
+        $nabezky_products = $this->get_nabezky_products_from_order($order);
+        
+        // Only show voucher info if order contains Nabezky products
+        if (empty($nabezky_products['items'])) {
+            return; // Don't show anything for non-Nabezky orders
+        }
+        
         $voucher_data = $order->get_meta('_nabezky_vouchers');
         
         if (empty($voucher_data)) {
-            // Show processing message
+            // Show processing message only for orders with Nabezky products
             echo '<div class="nabezky-processing" style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 20px; margin: 20px 0; border-radius: 5px;">';
             echo '<h3>' . __('Processing Your Map Access', 'wp-nabezky-connector') . '</h3>';
             echo '<p>' . __('We are processing your Nabezky map access. You will receive an email shortly with your voucher details.', 'wp-nabezky-connector') . '</p>';
@@ -815,6 +823,14 @@ class WP_Nabezky_Connector {
         $order = wc_get_order($atts['order_id']);
         if (!$order) {
             return '<p>' . __('Order not found.', 'wp-nabezky-connector') . '</p>';
+        }
+        
+        // Check if order contains configured Nabezky products first
+        $nabezky_products = $this->get_nabezky_products_from_order($order);
+        
+        // Only show voucher info if order contains Nabezky products
+        if (empty($nabezky_products['items'])) {
+            return ''; // Don't show anything for non-Nabezky orders
         }
         
         $voucher_data = $order->get_meta('_nabezky_vouchers');
