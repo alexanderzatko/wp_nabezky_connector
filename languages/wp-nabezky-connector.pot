@@ -293,7 +293,10 @@ msgstr ""
 msgid "Checking status..."
 msgstr ""
 
-msgid "Your Nabezky Map Access"
+msgid "Your Na bežky! map access information"
+msgstr ""
+
+msgid "As a bonus with your purchase, you now have access to the premium Na bežky map with cross-country trails grooming status and other useful information. You can access the map immediately using the button below, or save the details from the email we sent you for later use."
 msgstr ""
 
 msgid "Registered User Bonus!"
@@ -356,7 +359,7 @@ msgid "Callback processed successfully"
 msgstr ""
 
 # New email strings
-msgid "Your map access is now ready."
+msgid "This email contains your Na bežky map access details. As a bonus with your purchase, you now have access to the premium map with cross-country trails grooming status and other useful information."
 msgstr ""
 
 msgid "Your Voucher Information"
