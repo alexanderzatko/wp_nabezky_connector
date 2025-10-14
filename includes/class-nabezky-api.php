@@ -210,17 +210,337 @@ class WP_Nabezky_API {
     }
     
     /**
-     * Test API connection (placeholder for future implementation)
+     * Test API connection with comprehensive validation
      * 
      * @return array Connection test result
      */
     public function test_connection() {
-        // This would be implemented when the actual Nabezky API is available
-        return array(
-            'success' => true,
-            'message' => 'API connection test not yet implemented',
-            'response_time' => 0
+        $start_time = microtime(true);
+        $test_results = array(
+            'success' => false,
+            'message' => '',
+            'response_time' => 0,
+            'tests' => array(),
+            'errors' => array(),
+            'warnings' => array()
         );
+        
+        try {
+            // Test 1: Validate configuration
+            $config_test = $this->test_configuration();
+            $test_results['tests']['configuration'] = $config_test;
+            
+            if (!$config_test['success']) {
+                $test_results['errors'] = array_merge($test_results['errors'], $config_test['errors']);
+                $test_results['message'] = 'Configuration validation failed';
+                return $test_results;
+            }
+            
+            // Test 2: Basic connectivity
+            $connectivity_test = $this->test_basic_connectivity();
+            $test_results['tests']['connectivity'] = $connectivity_test;
+            
+            if (!$connectivity_test['success']) {
+                $test_results['errors'] = array_merge($test_results['errors'], $connectivity_test['errors']);
+                $test_results['message'] = 'Basic connectivity test failed';
+                return $test_results;
+            }
+            
+            // Test 3: Endpoint availability
+            $endpoint_test = $this->test_endpoint_availability();
+            $test_results['tests']['endpoint'] = $endpoint_test;
+            
+            if (!$endpoint_test['success']) {
+                $test_results['errors'] = array_merge($test_results['errors'], $endpoint_test['errors']);
+                $test_results['message'] = 'Endpoint availability test failed';
+                return $test_results;
+            }
+            
+            // Test 4: Authentication validation
+            $auth_test = $this->test_authentication();
+            $test_results['tests']['authentication'] = $auth_test;
+            
+            if (!$auth_test['success']) {
+                $test_results['warnings'] = array_merge($test_results['warnings'], $auth_test['warnings']);
+                $test_results['message'] = 'Authentication test completed with warnings';
+            } else {
+                $test_results['message'] = 'All connection tests passed successfully';
+            }
+            
+            // Calculate total response time
+            $test_results['response_time'] = round((microtime(true) - $start_time) * 1000, 2);
+            $test_results['success'] = true;
+            
+        } catch (Exception $e) {
+            $test_results['errors'][] = 'Unexpected error: ' . $e->getMessage();
+            $test_results['message'] = 'Connection test failed with unexpected error';
+            $test_results['response_time'] = round((microtime(true) - $start_time) * 1000, 2);
+        }
+        
+        return $test_results;
+    }
+    
+    /**
+     * Test configuration validity
+     * 
+     * @return array Configuration test result
+     */
+    private function test_configuration() {
+        $result = array(
+            'success' => true,
+            'errors' => array(),
+            'details' => array()
+        );
+        
+        $options = get_option('wp_nabezky_connector_options', array());
+        
+        // Check API URL
+        if (empty($options['nabezky_api_url'])) {
+            $result['errors'][] = 'API URL is not configured';
+            $result['success'] = false;
+        } elseif (!filter_var($options['nabezky_api_url'], FILTER_VALIDATE_URL)) {
+            $result['errors'][] = 'API URL format is invalid';
+            $result['success'] = false;
+        } else {
+            $result['details']['api_url'] = $options['nabezky_api_url'];
+        }
+        
+        // Check Map URL
+        if (empty($options['nabezky_map_url'])) {
+            $result['errors'][] = 'Map URL is not configured';
+            $result['success'] = false;
+        } elseif (!filter_var($options['nabezky_map_url'], FILTER_VALIDATE_URL)) {
+            $result['errors'][] = 'Map URL format is invalid';
+            $result['success'] = false;
+        } else {
+            $result['details']['map_url'] = $options['nabezky_map_url'];
+        }
+        
+        // Check access token
+        if (empty($options['nabezky_access_token'])) {
+            $result['errors'][] = 'Access token is not configured';
+            $result['success'] = false;
+        } else {
+            $result['details']['token_configured'] = true;
+        }
+        
+        // Check plugin enabled status
+        if (!$options['enabled']) {
+            $result['errors'][] = 'Plugin is not enabled';
+            $result['success'] = false;
+        } else {
+            $result['details']['plugin_enabled'] = true;
+        }
+        
+        // Check configured products
+        if (empty($options['nabezky_products'])) {
+            $result['errors'][] = 'No Nabezky products are configured';
+            $result['success'] = false;
+        } else {
+            $result['details']['products_configured'] = count($options['nabezky_products']);
+        }
+        
+        return $result;
+    }
+    
+    /**
+     * Test basic connectivity to API server
+     * 
+     * @return array Connectivity test result
+     */
+    private function test_basic_connectivity() {
+        $result = array(
+            'success' => false,
+            'errors' => array(),
+            'details' => array()
+        );
+        
+        $options = get_option('wp_nabezky_connector_options', array());
+        $api_url = rtrim($options['nabezky_api_url'], '/');
+        
+        // Test basic server connectivity with a HEAD request
+        $args = array(
+            'method' => 'HEAD',
+            'timeout' => 10,
+            'redirection' => 5,
+            'httpversion' => '1.1',
+            'user-agent' => 'WP-Nabezky-Connector/' . WP_NABEZKY_CONNECTOR_VERSION
+        );
+        
+        $response = wp_remote_request($api_url, $args);
+        
+        if (is_wp_error($response)) {
+            $result['errors'][] = 'Connection failed: ' . $response->get_error_message();
+            return $result;
+        }
+        
+        $response_code = wp_remote_retrieve_response_code($response);
+        $result['details']['response_code'] = $response_code;
+        $result['details']['server_reachable'] = true;
+        
+        // Accept various success codes
+        if ($response_code >= 200 && $response_code < 400) {
+            $result['success'] = true;
+            $result['details']['connection_status'] = 'Server is reachable';
+        } else {
+            $result['errors'][] = "Server responded with status code: $response_code";
+        }
+        
+        return $result;
+    }
+    
+    /**
+     * Test endpoint availability
+     * 
+     * @return array Endpoint test result
+     */
+    private function test_endpoint_availability() {
+        $result = array(
+            'success' => false,
+            'errors' => array(),
+            'details' => array()
+        );
+        
+        $options = get_option('wp_nabezky_connector_options', array());
+        $api_url = rtrim($options['nabezky_api_url'], '/');
+        $endpoint = $api_url . '/services/woocommerce-voucher-generation';
+        
+        // Test endpoint with OPTIONS request (safer than POST)
+        $args = array(
+            'method' => 'OPTIONS',
+            'timeout' => 15,
+            'redirection' => 5,
+            'httpversion' => '1.1',
+            'user-agent' => 'WP-Nabezky-Connector/' . WP_NABEZKY_CONNECTOR_VERSION,
+            'headers' => array(
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json'
+            )
+        );
+        
+        $response = wp_remote_request($endpoint, $args);
+        
+        if (is_wp_error($response)) {
+            $result['errors'][] = 'Endpoint request failed: ' . $response->get_error_message();
+            return $result;
+        }
+        
+        $response_code = wp_remote_retrieve_response_code($response);
+        $result['details']['endpoint_url'] = $endpoint;
+        $result['details']['response_code'] = $response_code;
+        
+        // Accept various response codes (some APIs don't support OPTIONS)
+        if ($response_code >= 200 && $response_code < 500) {
+            $result['success'] = true;
+            $result['details']['endpoint_status'] = 'Endpoint is accessible';
+            
+            // Check if it's a proper API response
+            if ($response_code === 405) {
+                $result['details']['note'] = 'Endpoint exists but OPTIONS method not supported (this is normal)';
+            }
+        } else {
+            $result['errors'][] = "Endpoint responded with status code: $response_code";
+            $result['details']['endpoint_status'] = 'Endpoint may not be available';
+        }
+        
+        return $result;
+    }
+    
+    /**
+     * Test authentication without generating vouchers
+     * 
+     * @return array Authentication test result
+     */
+    private function test_authentication() {
+        $result = array(
+            'success' => false,
+            'warnings' => array(),
+            'details' => array()
+        );
+        
+        $options = get_option('wp_nabezky_connector_options', array());
+        $api_url = rtrim($options['nabezky_api_url'], '/');
+        $endpoint = $api_url . '/services/woocommerce-voucher-generation';
+        
+        // Create a minimal test request that won't generate vouchers
+        $test_data = array(
+            'access_token' => $options['nabezky_access_token'],
+            'order_data' => array(
+                'test_mode' => true,
+                'email' => 'test@example.com',
+                'amount' => 0,
+                'order_id' => 'TEST-' . time(),
+                'region_id' => $options['default_region_id'] ?? 1
+            )
+        );
+        
+        $args = array(
+            'method' => 'POST',
+            'timeout' => 20,
+            'redirection' => 5,
+            'httpversion' => '1.1',
+            'user-agent' => 'WP-Nabezky-Connector/' . WP_NABEZKY_CONNECTOR_VERSION,
+            'headers' => array(
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ),
+            'body' => json_encode($test_data)
+        );
+        
+        $response = wp_remote_request($endpoint, $args);
+        
+        if (is_wp_error($response)) {
+            $result['warnings'][] = 'Authentication test failed: ' . $response->get_error_message();
+            return $result;
+        }
+        
+        $response_code = wp_remote_retrieve_response_code($response);
+        $response_body = wp_remote_retrieve_body($response);
+        
+        $result['details']['response_code'] = $response_code;
+        $result['details']['response_size'] = strlen($response_body);
+        
+        // Analyze response
+        if ($response_code === 200) {
+            $result['success'] = true;
+            $result['details']['auth_status'] = 'Authentication successful';
+            
+            // Try to parse response
+            $response_data = json_decode($response_body, true);
+            if ($response_data) {
+                $result['details']['response_format'] = 'Valid JSON response';
+                if (isset($response_data['status'])) {
+                    $result['details']['api_status'] = $response_data['status'];
+                }
+            } else {
+                $result['warnings'][] = 'Response is not valid JSON';
+            }
+            
+        } elseif ($response_code === 401) {
+            $result['warnings'][] = 'Authentication failed - Invalid access token';
+            $result['details']['auth_status'] = 'Authentication failed';
+        } elseif ($response_code === 403) {
+            $result['warnings'][] = 'Access forbidden - Token may not have required permissions';
+            $result['details']['auth_status'] = 'Access forbidden';
+        } elseif ($response_code >= 400 && $response_code < 500) {
+            $result['warnings'][] = "Client error (HTTP $response_code) - Check request format";
+            $result['details']['auth_status'] = 'Client error';
+        } elseif ($response_code >= 500) {
+            $result['warnings'][] = "Server error (HTTP $response_code) - API server issue";
+            $result['details']['auth_status'] = 'Server error';
+        } else {
+            $result['warnings'][] = "Unexpected response code: $response_code";
+            $result['details']['auth_status'] = 'Unexpected response';
+        }
+        
+        // Log the test request for debugging
+        $this->log_activity('authentication_test', array(
+            'endpoint' => $endpoint,
+            'response_code' => $response_code,
+            'response_size' => strlen($response_body)
+        ), $result['success'] ? 'success' : 'warning');
+        
+        return $result;
     }
     
     /**

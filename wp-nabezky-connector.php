@@ -47,9 +47,19 @@ class WP_Nabezky_Connector {
      * Constructor
      */
     private function __construct() {
+        // Include required files
+        $this->include_files();
+        
         add_action('init', array($this, 'init'));
         register_activation_hook(__FILE__, array($this, 'activate'));
         register_deactivation_hook(__FILE__, array($this, 'deactivate'));
+    }
+    
+    /**
+     * Include required files
+     */
+    private function include_files() {
+        require_once WP_NABEZKY_CONNECTOR_PLUGIN_DIR . 'includes/class-nabezky-api.php';
     }
     
     /**
@@ -89,6 +99,9 @@ class WP_Nabezky_Connector {
         
         // Add plugin action links
         add_filter('plugin_action_links_' . plugin_basename(__FILE__), array($this, 'add_plugin_action_links'));
+        
+        // Add AJAX handlers for connection testing
+        add_action('wp_ajax_test_nabezky_connection', array($this, 'ajax_test_connection'));
     }
     
     /**
@@ -189,6 +202,8 @@ class WP_Nabezky_Connector {
         
         // Localize admin script
         wp_localize_script('wp-nabezky-connector-admin', 'nabezky_admin', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('test_nabezky_connection'),
             'i18n' => array(
                 'show' => __('Show', 'wp-nabezky-connector'),
                 'hide' => __('Hide', 'wp-nabezky-connector'),
@@ -202,6 +217,16 @@ class WP_Nabezky_Connector {
                 'validApiUrlRequired' => __('Valid API URL is required.', 'wp-nabezky-connector'),
                 'validMapUrlRequired' => __('Valid Map URL is required.', 'wp-nabezky-connector'),
                 'fixErrors' => __('Please fix the following errors:', 'wp-nabezky-connector'),
+                'testSuccess' => __('Connection test successful!', 'wp-nabezky-connector'),
+                'testFailed' => __('Connection test failed!', 'wp-nabezky-connector'),
+                'testError' => __('Error occurred during connection test.', 'wp-nabezky-connector'),
+                'testResults' => __('Test Results:', 'wp-nabezky-connector'),
+                'responseTime' => __('Response Time:', 'wp-nabezky-connector'),
+                'statusCode' => __('Status Code:', 'wp-nabezky-connector'),
+                'authentication' => __('Authentication:', 'wp-nabezky-connector'),
+                'endpoint' => __('Endpoint:', 'wp-nabezky-connector'),
+                'details' => __('Details:', 'wp-nabezky-connector'),
+                'close' => __('Close', 'wp-nabezky-connector'),
             )
         ));
     }
@@ -832,6 +857,34 @@ class WP_Nabezky_Connector {
      */
     private function log_info($message, $data = '') {
         error_log("WP Nabezky Connector INFO: $message" . ($data ? " - $data" : ''));
+    }
+    
+    /**
+     * AJAX handler for testing Nabezky connection
+     */
+    public function ajax_test_connection() {
+        // Verify nonce for security
+        if (!wp_verify_nonce($_POST['nonce'], 'test_nabezky_connection')) {
+            wp_die(__('Security check failed', 'wp-nabezky-connector'));
+        }
+        
+        // Check user capabilities
+        if (!current_user_can('manage_options')) {
+            wp_die(__('Insufficient permissions', 'wp-nabezky-connector'));
+        }
+        
+        // Get current plugin options
+        $options = get_option('wp_nabezky_connector_options', array());
+        
+        // Initialize API class and run test
+        $api = new WP_Nabezky_API();
+        $test_result = $api->test_connection();
+        
+        // Log the test attempt
+        $this->log_info('API Connection Test', 'Test initiated from admin interface - Result: ' . json_encode($test_result));
+        
+        // Return JSON response
+        wp_send_json($test_result);
     }
     
     /**
