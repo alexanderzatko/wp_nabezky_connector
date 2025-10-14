@@ -1,0 +1,364 @@
+# Copyright (C) 2024 Na bezky!
+# This file is distributed under the same license as the WP Na bezky! Connector plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Na bezky! Connector 1.0.0\n"
+"Report-Msgid-Bugs-To: https://nabezky.sk\n"
+"POT-Creation-Date: 2024-01-01 12:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"Language: cs_CZ\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: WP-CLI 2.8.1\n"
+"X-Domain: wp-nabezky-connector\n"
+
+# Plugin header
+msgid "WP Na bezky! Connector"
+msgstr "WP Na bezky! Připojovací modul"
+
+msgid "Na bezky! Connector"
+msgstr "Na bezky! Připojovací modul"
+
+msgid "Settings"
+msgstr "Nastavení"
+
+# Admin page strings
+msgid "Settings saved successfully!"
+msgstr "Nastavení byla úspěšně uložena!"
+
+msgid "Nabezky API URL"
+msgstr "Nabezky API URL"
+
+msgid "Base URL for the Nabezky API (e.g., https://nabezky.sk)"
+msgstr "Základní URL pro Nabezky API (např. https://nabezky.sk)"
+
+msgid "Nabezky Map URL"
+msgstr "Nabezky Mapa URL"
+
+msgid "URL where customers will access the map (can be mapa.nabezky.sk or embedded iframe URL)"
+msgstr "URL, kde si zákazníci budou moci zobrazit mapu (může být mapa.nabezky.sk nebo vložená iframe URL)"
+
+msgid "Access Token"
+msgstr "Přístupový token"
+
+msgid "Access token for authenticating with Nabezky API (communicated out-of-band)"
+msgstr "Přístupový token pro autentifikaci s Nabezky API (komunikovaný mimo pásmo)"
+
+msgid "Callback URL"
+msgstr "Callback URL"
+
+msgid "URL where Nabezky will send voucher information (automatically generated)"
+msgstr "URL, kam Nabezky pošle informace o poukazech (automaticky generováno)"
+
+msgid "Nabezky Products"
+msgstr "Nabezky Produkty"
+
+msgid "Select products that trigger Nabezky integration"
+msgstr "Vyberte produkty, které spustí Nabezky integraci"
+
+msgid "Select WooCommerce products that should trigger Nabezky voucher generation when purchased"
+msgstr "Vyberte WooCommerce produkty, které by měly spustit generování Nabezky poukazů při koupi"
+
+msgid "No WooCommerce products found. Please create some products first."
+msgstr "Nebyly nalezeny žádné WooCommerce produkty. Nejprve vytvořte nějaké produkty."
+
+msgid "Season Pass Price"
+msgstr "Cena sezónní permanentky"
+
+msgid "Minimum price for generating a seasonal voucher instead of 3-day vouchers"
+msgstr "Minimální cena pro generování sezónního poukazu místo 3denních poukazů"
+
+msgid "Default Region ID"
+msgstr "Výchozí ID regionu"
+
+msgid "Default region ID for voucher generation (1-99)"
+msgstr "Výchozí ID regionu pro generování poukazů (1-99)"
+
+msgid "Enable Plugin"
+msgstr "Povolit modul"
+
+msgid "Enable the Nabezky connector"
+msgstr "Povolit Nabezky připojovací modul"
+
+msgid "Enable automatic voucher generation when WooCommerce orders are completed"
+msgstr "Povolit automatické generování poukazů při dokončení WooCommerce objednávek"
+
+msgid "Save Settings"
+msgstr "Uložit nastavení"
+
+# Plugin Information section
+msgid "Plugin Information"
+msgstr "Informace o modulu"
+
+msgid "How it works"
+msgstr "Jak to funguje"
+
+msgid "Customer completes a WooCommerce order containing configured Nabezky products"
+msgstr "Zákazník dokončí WooCommerce objednávku obsahující nakonfigurované Nabezky produkty"
+
+msgid "Plugin sends order details to Nabezky API for voucher generation"
+msgstr "Modul pošle detaily objednávky do Nabezky API na generování poukazů"
+
+msgid "Nabezky generates vouchers and sends callback with voucher information"
+msgstr "Nabezky vygeneruje poukazy a pošle callback s informacemi o poukazech"
+
+msgid "Customer receives voucher information via email and on the thank you page"
+msgstr "Zákazník dostane informace o poukazech e-mailem a na stránce děkujeme"
+
+msgid "Customer can use voucher numbers to access the Nabezky interactive map"
+msgstr "Zákazník může použít čísla poukazů na přístup k interaktivní Nabezky mapě"
+
+msgid "Voucher Types"
+msgstr "Typy poukazů"
+
+msgid "Seasonal Vouchers:"
+msgstr "Sezónní poukazy:"
+
+msgid "Generated when order value >= Season Pass Price. Valid until end of ski season."
+msgstr "Generovány, když hodnota objednávky >= cena sezónní permanentky. Platné do konce lyžařské sezóny."
+
+msgid "3-Day Vouchers:"
+msgstr "3denní poukazy:"
+
+msgid "Generated when order value < Season Pass Price. Valid for 3 days from generation."
+msgstr "Generovány, když hodnota objednávky < cena sezónní permanentky. Platné 3 dny od generování."
+
+msgid "Registered User Access:"
+msgstr "Přístup registrovaného uživatele:"
+
+msgid "If customer is registered in Nabezky, they get access to all premium features."
+msgstr "Pokud je zákazník registrovaný v Nabezky, získá přístup ke všem prémiovým funkcím."
+
+msgid "API Integration"
+msgstr "API integrace"
+
+msgid "This plugin integrates with Nabezky through a custom API endpoint:"
+msgstr "Tento modul se integruje s Nabezky přes vlastní API endpoint:"
+
+msgid "Endpoint:"
+msgstr "Endpoint:"
+
+msgid "Authentication:"
+msgstr "Autentifikace:"
+
+msgid "Access token sent in request body (custom Drupal Services format)"
+msgstr "Přístupový token poslaný v těle požadavky (vlastní Drupal Services formát)"
+
+msgid "Callback URL:"
+msgstr "Callback URL:"
+
+msgid "API Failure Handling"
+msgstr "Zpracování selhání API"
+
+msgid "If the Nabezky API is unavailable, the plugin will notify both the customer and admin about the technical difficulties. Manual processing will be required to generate vouchers."
+msgstr "Pokud je Nabezky API nedostupné, modul upozorní zákazníka i administrátora na technické problémy. Na generování poukazů bude potřeba manuální zpracování."
+
+msgid "Note:"
+msgstr "Poznámka:"
+
+msgid "No local voucher generation occurs - all vouchers must be created through the Nabezky system."
+msgstr "Žádné lokální generování poukazů se neprovádí - všechny poukazy musí být vytvořeny přes Nabezky systém."
+
+msgid "Product Configuration"
+msgstr "Konfigurace produktů"
+
+msgid "Select which WooCommerce products should trigger Nabezky voucher generation when purchased. Only orders containing these products will be processed."
+msgstr "Vyberte, které WooCommerce produkty by měly spustit generování Nabezky poukazů při koupi. Budou zpracovány pouze objednávky obsahující tyto produkty."
+
+msgid "Map Access Options"
+msgstr "Možnosti přístupu k mapě"
+
+msgid "Configure where customers will access the Nabezky map:"
+msgstr "Nakonfigurujte, kde si zákazníci budou moci zobrazit Nabezky mapu:"
+
+msgid "Direct Access:"
+msgstr "Přímý přístup:"
+
+msgid "Link to mapa.nabezky.sk with voucher parameters"
+msgstr "Odkaz na mapa.nabezky.sk s parametry poukazu"
+
+msgid "Embedded Access:"
+msgstr "Vložený přístup:"
+
+msgid "Link to your own embedded iframe with proper authentication"
+msgstr "Odkaz na váš vlastní vložený iframe se správnou autentifikací"
+
+msgid "WooCommerce Integration"
+msgstr "WooCommerce integrace"
+
+msgid "WooCommerce is active and detected"
+msgstr "WooCommerce je aktivní a detekován"
+
+msgid "Found"
+msgstr "Nalezeno"
+
+msgid "WooCommerce products available for selection."
+msgstr "WooCommerce produktů dostupných na výběr."
+
+msgid "WooCommerce is not active. This plugin requires WooCommerce to function."
+msgstr "WooCommerce není aktivní. Tento modul vyžaduje WooCommerce na fungování."
+
+msgid "Setup Instructions"
+msgstr "Instalační pokyny"
+
+msgid "Install and activate WooCommerce"
+msgstr "Nainstalujte a aktivujte WooCommerce"
+
+msgid "Create your trail payment products in WooCommerce"
+msgstr "Vytvořte vaše produkty platby za trasy v WooCommerce"
+
+msgid "Configure Nabezky API settings above"
+msgstr "Nakonfigurujte Nabezky API nastavení výše"
+
+msgid "Select which products trigger Nabezky integration"
+msgstr "Vyberte, které produkty spustí Nabezky integraci"
+
+msgid "Obtain access token from Nabezky team"
+msgstr "Získejte přístupový token od Nabezky týmu"
+
+msgid "Enable the plugin and test with a purchase"
+msgstr "Povolte modul a otestujte koupí"
+
+# JavaScript strings
+msgid "Show"
+msgstr "Zobrazit"
+
+msgid "Hide"
+msgstr "Skrýt"
+
+msgid "Select All"
+msgstr "Vybrat vše"
+
+msgid "Deselect All"
+msgstr "Zrušit výběr všech"
+
+msgid "Test Connection"
+msgstr "Testovat připojení"
+
+msgid "Testing..."
+msgstr "Testování..."
+
+msgid "Connection test not yet implemented. This will test the API endpoint in a future version."
+msgstr "Test připojení zatím není implementován. Toto bude testovat API endpoint v budoucí verzi."
+
+msgid "Access token is required when plugin is enabled."
+msgstr "Přístupový token je potřeba, když je modul povolen."
+
+msgid "At least one product must be selected when plugin is enabled."
+msgstr "Alespoň jeden produkt musí být vybrán, když je modul povolen."
+
+msgid "Valid API URL is required."
+msgstr "Je potřeba platná API URL."
+
+msgid "Valid Map URL is required."
+msgstr "Je potřeba platná URL mapy."
+
+msgid "Please fix the following errors:"
+msgstr "Prosím opravte následující chyby:"
+
+msgid "Processing is taking longer than expected. You will receive an email with your voucher information shortly."
+msgstr "Zpracování trvá déle, než se očekávalo. Brzy dostanete e-mail s informacemi o vašem poukazu."
+
+msgid "Opening..."
+msgstr "Otevírám..."
+
+msgid "Copied!"
+msgstr "Zkopírováno!"
+
+msgid "Click to copy"
+msgstr "Klikněte pro kopírování"
+
+# Email and voucher strings
+msgid "Your Nabezky Map Access"
+msgstr "Váš přístup k Nabezky mapě"
+
+msgid "Thank you for supporting cross-country skiing!"
+msgstr "Děkujeme za podporu běžeckého lyžování!"
+
+msgid "Your payment has been processed and you will receive map access information shortly."
+msgstr "Vaše platba byla zpracována a brzy dostanete informace o přístupu k mapě."
+
+msgid "If you do not receive your map access details within 24 hours, please contact our support team."
+msgstr "Pokud nedostanete detaily o přístupu k mapě do 24 hodin, prosím kontaktujte náš podporný tým."
+
+msgid "Visit the Interactive Map"
+msgstr "Navštivte interaktivní mapu"
+
+msgid "Processing Your Map Access"
+msgstr "Zpracování vašeho přístupu k mapě"
+
+msgid "We are processing your Nabezky map access. You will receive an email shortly with your voucher details."
+msgstr "Zpracováváme váš přístup k Nabezky mapě. Brzy dostanete e-mail s detaily vašeho poukazu."
+
+msgid "Checking status..."
+msgstr "Kontrola stavu..."
+
+msgid "Registered User Bonus!"
+msgstr "Bonus pro registrovaného uživatele!"
+
+msgid "As a nabezky.sk registered user, you have gained access to all premium features including the Nabezky map."
+msgstr "Jako registrovaný uživatel nabezky.sk jste získali přístup ke všem prémiovým funkcím včetně Nabezky mapy."
+
+msgid "Voucher Number:"
+msgstr "Číslo poukazu:"
+
+msgid "Access Type:"
+msgstr "Typ přístupu:"
+
+msgid "Seasonal Pass"
+msgstr "Sezónní permanentka"
+
+msgid "3-Day Access"
+msgstr "3denní přístup"
+
+msgid "Expires:"
+msgstr "Vyprší:"
+
+msgid "Access Map Now"
+msgstr "Přístup k mapě nyní"
+
+# Shortcode strings
+msgid "Order ID is required."
+msgstr "ID objednávky je potřeba."
+
+msgid "Order not found."
+msgstr "Objednávka nebyla nalezena."
+
+msgid "No voucher information found for this order."
+msgstr "Pro tuto objednávku nebyly nalezeny žádné informace o poukazech."
+
+msgid "Access Interactive Map"
+msgstr "Přístup k interaktivní mapě"
+
+msgid "Voucher number and email are required."
+msgstr "Číslo poukazu a e-mail jsou potřeba."
+
+# Error messages
+msgid "Security check failed"
+msgstr "Bezpečnostní kontrola selhala"
+
+msgid "Order not found"
+msgstr "Objednávka nebyla nalezena"
+
+msgid "Invalid or missing access token"
+msgstr "Neplatný nebo chybějící přístupový token"
+
+msgid "Invalid access token"
+msgstr "Neplatný přístupový token"
+
+msgid "Invalid callback data"
+msgstr "Neplatná callback data"
+
+msgid "Callback processed successfully"
+msgstr "Callback úspěšně zpracován"
+
+# New email strings
+msgid "Your map access is now ready."
+msgstr "Váš přístup k mapě je nyní připraven."
+
+msgid "Your Voucher Information"
+msgstr "Informace o vašem poukazu"

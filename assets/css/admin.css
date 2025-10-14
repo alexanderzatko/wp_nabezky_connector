@@ -1,0 +1,84 @@
+/* WP Nabezky Connector - Admin Styles */
+
+.wp-nabezky-connector-info .card {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.wp-nabezky-connector-info .card h3 {
+    margin-top: 0;
+    color: #23282d;
+    font-size: 16px;
+}
+
+.wp-nabezky-connector-info .card ul,
+.wp-nabezky-connector-info .card ol {
+    margin: 10px 0;
+}
+
+.wp-nabezky-connector-info .card li {
+    margin-bottom: 5px;
+}
+
+.nabezky-products-fieldset {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background: #f9f9f9;
+}
+
+.nabezky-products-fieldset label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
+.nabezky-products-fieldset input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.nabezky-status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.nabezky-status-indicator.success {
+    background-color: #46b450;
+}
+
+.nabezky-status-indicator.warning {
+    background-color: #ffb900;
+}
+
+.nabezky-status-indicator.error {
+    background-color: #dc3232;
+}
+
+.form-table th {
+    width: 200px;
+}
+
+.form-table .description {
+    font-style: italic;
+    color: #666;
+}
+
+/* Token field styling */
+input[name="nabezky_access_token"] {
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+/* Callback URL styling */
+input[name="nabezky_callback_url"] {
+    background-color: #f9f9f9;
+    color: #666;
+}

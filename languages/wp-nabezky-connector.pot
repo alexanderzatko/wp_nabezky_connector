@@ -1,0 +1,427 @@
+# Copyright (C) 2024 Na bezky!
+# This file is distributed under the same license as the WP Na bezky! Connector plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Na bezky! Connector 1.0.0\n"
+"Report-Msgid-Bugs-To: https://nabezky.sk\n"
+"POT-Creation-Date: 2024-01-01 12:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+# Plugin header
+msgid "WP Na bezky! Connector"
+msgstr ""
+
+msgid "Na bezky! Connector"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+# Admin page strings
+msgid "Settings saved successfully!"
+msgstr ""
+
+msgid "Nabezky API URL"
+msgstr ""
+
+msgid "Base URL for the Nabezky API (e.g., https://nabezky.sk)"
+msgstr ""
+
+msgid "Nabezky Map URL"
+msgstr ""
+
+msgid "URL where customers will access the map (can be mapa.nabezky.sk or embedded iframe URL)"
+msgstr ""
+
+msgid "Access Token"
+msgstr ""
+
+msgid "Access token for authenticating with Nabezky API (communicated out-of-band)"
+msgstr ""
+
+msgid "Callback URL"
+msgstr ""
+
+msgid "URL where Nabezky will send voucher information (automatically generated)"
+msgstr ""
+
+msgid "Nabezky Products"
+msgstr ""
+
+msgid "Select products that trigger Nabezky integration"
+msgstr ""
+
+msgid "Select WooCommerce products that should trigger Nabezky voucher generation when purchased"
+msgstr ""
+
+msgid "No WooCommerce products found. Please create some products first."
+msgstr ""
+
+msgid "Season Pass Price"
+msgstr ""
+
+msgid "Minimum price for generating a seasonal voucher instead of 3-day vouchers"
+msgstr ""
+
+msgid "Default Region ID"
+msgstr ""
+
+msgid "Default region ID for voucher generation (1-99)"
+msgstr ""
+
+msgid "Enable Plugin"
+msgstr ""
+
+msgid "Enable the Nabezky connector"
+msgstr ""
+
+msgid "Enable automatic voucher generation when WooCommerce orders are completed"
+msgstr ""
+
+msgid "Save Settings"
+msgstr ""
+
+# Plugin Information section
+msgid "Plugin Information"
+msgstr ""
+
+msgid "How it works"
+msgstr ""
+
+msgid "Customer completes a WooCommerce order containing configured Nabezky products"
+msgstr ""
+
+msgid "Plugin sends order details to Nabezky API for voucher generation"
+msgstr ""
+
+msgid "Nabezky generates vouchers and sends callback with voucher information"
+msgstr ""
+
+msgid "Customer receives voucher information via email and on the thank you page"
+msgstr ""
+
+msgid "Customer can use voucher numbers to access the Nabezky interactive map"
+msgstr ""
+
+msgid "Voucher Types"
+msgstr ""
+
+msgid "Seasonal Vouchers:"
+msgstr ""
+
+msgid "Generated when order value >= Season Pass Price. Valid until end of ski season."
+msgstr ""
+
+msgid "3-Day Vouchers:"
+msgstr ""
+
+msgid "Generated when order value < Season Pass Price. Valid for 3 days from generation."
+msgstr ""
+
+msgid "Registered User Access:"
+msgstr ""
+
+msgid "If customer is registered in Nabezky, they get access to all premium features."
+msgstr ""
+
+msgid "API Integration"
+msgstr ""
+
+msgid "This plugin integrates with Nabezky through a custom API endpoint:"
+msgstr ""
+
+msgid "Endpoint:"
+msgstr ""
+
+msgid "Authentication:"
+msgstr ""
+
+msgid "Access token sent in request body (custom Drupal Services format)"
+msgstr ""
+
+msgid "Callback URL:"
+msgstr ""
+
+msgid "API Failure Handling"
+msgstr ""
+
+msgid "If the Nabezky API is unavailable, the plugin will notify both the customer and admin about the technical difficulties. Manual processing will be required to generate vouchers."
+msgstr ""
+
+msgid "Note:"
+msgstr ""
+
+msgid "No local voucher generation occurs - all vouchers must be created through the Nabezky system."
+msgstr ""
+
+msgid "Product Configuration"
+msgstr ""
+
+msgid "Select which WooCommerce products should trigger Nabezky voucher generation when purchased. Only orders containing these products will be processed."
+msgstr ""
+
+msgid "Map Access Options"
+msgstr ""
+
+msgid "Configure where customers will access the Nabezky map:"
+msgstr ""
+
+msgid "Direct Access:"
+msgstr ""
+
+msgid "Link to mapa.nabezky.sk with voucher parameters"
+msgstr ""
+
+msgid "Embedded Access:"
+msgstr ""
+
+msgid "Link to your own embedded iframe with proper authentication"
+msgstr ""
+
+msgid "WooCommerce Integration"
+msgstr ""
+
+msgid "WooCommerce is active and detected"
+msgstr ""
+
+msgid "Found"
+msgstr ""
+
+msgid "WooCommerce products available for selection."
+msgstr ""
+
+msgid "WooCommerce is not active. This plugin requires WooCommerce to function."
+msgstr ""
+
+msgid "Setup Instructions"
+msgstr ""
+
+msgid "Install and activate WooCommerce"
+msgstr ""
+
+msgid "Create your trail payment products in WooCommerce"
+msgstr ""
+
+msgid "Configure Nabezky API settings above"
+msgstr ""
+
+msgid "Select which products trigger Nabezky integration"
+msgstr ""
+
+msgid "Obtain access token from Nabezky team"
+msgstr ""
+
+msgid "Enable the plugin and test with a purchase"
+msgstr ""
+
+# JavaScript strings
+msgid "Show"
+msgstr ""
+
+msgid "Hide"
+msgstr ""
+
+msgid "Select All"
+msgstr ""
+
+msgid "Deselect All"
+msgstr ""
+
+msgid "Test Connection"
+msgstr ""
+
+msgid "Testing..."
+msgstr ""
+
+msgid "Connection test not yet implemented. This will test the API endpoint in a future version."
+msgstr ""
+
+msgid "Access token is required when plugin is enabled."
+msgstr ""
+
+msgid "At least one product must be selected when plugin is enabled."
+msgstr ""
+
+msgid "Valid API URL is required."
+msgstr ""
+
+msgid "Valid Map URL is required."
+msgstr ""
+
+msgid "Please fix the following errors:"
+msgstr ""
+
+msgid "Processing is taking longer than expected. You will receive an email with your voucher information shortly."
+msgstr ""
+
+msgid "Opening..."
+msgstr ""
+
+msgid "Copied!"
+msgstr ""
+
+msgid "Click to copy"
+msgstr ""
+
+# Email and voucher strings
+msgid "Your Nabezky Map Access"
+msgstr ""
+
+msgid "Thank you for supporting cross-country skiing!"
+msgstr ""
+
+msgid "Your payment has been processed and you will receive map access information shortly."
+msgstr ""
+
+msgid "If you do not receive your map access details within 24 hours, please contact our support team."
+msgstr ""
+
+msgid "Visit the Interactive Map"
+msgstr ""
+
+msgid "Processing Your Map Access"
+msgstr ""
+
+msgid "We are processing your Nabezky map access. You will receive an email shortly with your voucher details."
+msgstr ""
+
+msgid "Checking status..."
+msgstr ""
+
+msgid "Your Nabezky Map Access"
+msgstr ""
+
+msgid "Registered User Bonus!"
+msgstr ""
+
+msgid "As a nabezky.sk registered user, you have gained access to all premium features including the Nabezky map."
+msgstr ""
+
+msgid "Voucher Number:"
+msgstr ""
+
+msgid "Access Type:"
+msgstr ""
+
+msgid "Seasonal Pass"
+msgstr ""
+
+msgid "3-Day Access"
+msgstr ""
+
+msgid "Expires:"
+msgstr ""
+
+msgid "Access Map Now"
+msgstr ""
+
+# Shortcode strings
+msgid "Order ID is required."
+msgstr ""
+
+msgid "Order not found."
+msgstr ""
+
+msgid "No voucher information found for this order."
+msgstr ""
+
+msgid "Access Interactive Map"
+msgstr ""
+
+msgid "Voucher number and email are required."
+msgstr ""
+
+# Error messages
+msgid "Security check failed"
+msgstr ""
+
+msgid "Order not found"
+msgstr ""
+
+msgid "Invalid or missing access token"
+msgstr ""
+
+msgid "Invalid access token"
+msgstr ""
+
+msgid "Invalid callback data"
+msgstr ""
+
+msgid "Callback processed successfully"
+msgstr ""
+
+# New email strings
+msgid "Your map access is now ready."
+msgstr ""
+
+msgid "Your Voucher Information"
+msgstr ""
+
+# Debug strings
+msgid "Debug Information"
+msgstr ""
+
+msgid "Plugin Status"
+msgstr ""
+
+msgid "Version:"
+msgstr ""
+
+msgid "WooCommerce Active:"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "Plugin Enabled:"
+msgstr ""
+
+msgid "Access Token Set:"
+msgstr ""
+
+msgid "Configured Products:"
+msgstr ""
+
+msgid "Recent Orders Test"
+msgstr ""
+
+msgid "Recent orders:"
+msgstr ""
+
+msgid "Order"
+msgstr ""
+
+msgid "Has vouchers"
+msgstr ""
+
+msgid "No recent orders found."
+msgstr ""
+
+msgid "Manual Test"
+msgstr ""
+
+msgid "Test order completion handler manually:"
+msgstr ""
+
+msgid "Order ID"
+msgstr ""
+
+msgid "Test Order Completion"
+msgstr ""
+
+msgid "This will manually trigger the order completion handler and log the process."
+msgstr ""
+
+msgid "Test order completion triggered for order #%d. Check debug logs."
+msgstr ""
+
+msgid "Order #%d not found."
+msgstr ""
