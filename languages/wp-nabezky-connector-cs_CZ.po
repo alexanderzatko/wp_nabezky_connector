@@ -364,7 +364,44 @@ msgstr "Callback úspěšně zpracován"
 
 # New email strings
 msgid "This email contains your Na bežky map access details. As a bonus with your purchase, you now have access to the premium map with cross-country trails grooming status and other useful information."
-msgstr "Tento e-mail obsahuje vaše detaily o přístupu k Na bežky mapě. Jako bonus k vašemu nákupu nyní máte přístup k prémiové mapě s informacemi o úpravě běžeckých tratí a dalšími užitečnými informacemi."
+msgstr "Tento e-mail obsahuje detaily o přístupu k Na bežky mapě. Jako bonus k vašemu nákupu nyní máte přístup k prémiové mapě s informacemi o úpravě běžeckých tratí a dalšími užitečnými informacemi."
 
 msgid "Your Voucher Information"
 msgstr "Informace o vašem poukazu"
+
+# Month names
+msgid "January"
+msgstr "Leden"
+
+msgid "February"
+msgstr "Únor"
+
+msgid "March"
+msgstr "Březen"
+
+msgid "April"
+msgstr "Duben"
+
+msgid "May"
+msgstr "Květen"
+
+msgid "June"
+msgstr "Červen"
+
+msgid "July"
+msgstr "Červenec"
+
+msgid "August"
+msgstr "Srpen"
+
+msgid "September"
+msgstr "Září"
+
+msgid "October"
+msgstr "Říjen"
+
+msgid "November"
+msgstr "Listopad"
+
+msgid "December"
+msgstr "Prosinec"

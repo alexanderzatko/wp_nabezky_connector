@@ -611,7 +611,7 @@ class WP_Nabezky_Connector {
                            ($voucher['type'] === 'seasonal' ? __('Seasonal Pass', 'wp-nabezky-connector') : __('3-Day Access', 'wp-nabezky-connector')) . '</p>';
                 
                 if (isset($voucher['expires'])) {
-                    $message .= '<p><strong>' . __('Expires:', 'wp-nabezky-connector') . '</strong> ' . date('Y-m-d H:i', $voucher['expires']) . '</p>';
+                    $message .= '<p><strong>' . __('Expires:', 'wp-nabezky-connector') . '</strong> ' . $this->format_localized_date($voucher['expires']) . '</p>';
                 }
                 
                 // Add activation link for first voucher
@@ -751,7 +751,7 @@ class WP_Nabezky_Connector {
                 echo '<strong>' . __('Access Type:', 'wp-nabezky-connector') . '</strong> ' . 
                      ($voucher['type'] === 'seasonal' ? __('Seasonal Pass', 'wp-nabezky-connector') : __('3-Day Access', 'wp-nabezky-connector')) . '<br>';
                 if (isset($voucher['expires'])) {
-                    echo '<strong>' . __('Expires:', 'wp-nabezky-connector') . '</strong> ' . date('Y-m-d H:i', $voucher['expires']);
+                    echo '<strong>' . __('Expires:', 'wp-nabezky-connector') . '</strong> ' . $this->format_localized_date($voucher['expires']);
                 }
                 
                 if ($index === 0) {
@@ -832,6 +832,42 @@ class WP_Nabezky_Connector {
      */
     private function log_info($message, $data = '') {
         error_log("WP Nabezky Connector INFO: $message" . ($data ? " - $data" : ''));
+    }
+    
+    /**
+     * Format date for display with proper localization
+     */
+    private function format_localized_date($timestamp) {
+        $locale = get_locale();
+        
+        // Slovak month names
+        $sk_months = array(
+            1 => __('January', 'wp-nabezky-connector'),
+            2 => __('February', 'wp-nabezky-connector'),
+            3 => __('March', 'wp-nabezky-connector'),
+            4 => __('April', 'wp-nabezky-connector'),
+            5 => __('May', 'wp-nabezky-connector'),
+            6 => __('June', 'wp-nabezky-connector'),
+            7 => __('July', 'wp-nabezky-connector'),
+            8 => __('August', 'wp-nabezky-connector'),
+            9 => __('September', 'wp-nabezky-connector'),
+            10 => __('October', 'wp-nabezky-connector'),
+            11 => __('November', 'wp-nabezky-connector'),
+            12 => __('December', 'wp-nabezky-connector')
+        );
+        
+        $day = date('j', $timestamp);
+        $month = date('n', $timestamp);
+        $year = date('Y', $timestamp);
+        
+        if ($locale === 'sk_SK') {
+            return $day . '. ' . $sk_months[$month] . ' ' . $year;
+        } elseif ($locale === 'cs_CZ') {
+            return $day . '. ' . $sk_months[$month] . ' ' . $year;
+        } else {
+            // Fallback to simple format for other locales
+            return date('j.n.Y', $timestamp);
+        }
     }
 }
 
