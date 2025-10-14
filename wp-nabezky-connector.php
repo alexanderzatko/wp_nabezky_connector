@@ -660,19 +660,28 @@ class WP_Nabezky_Connector {
      * Build map access URL with voucher and email
      */
     private function build_map_access_url($base_url, $voucher_number, $email) {
-        // Parse the base URL to determine the correct domain
+        // Parse the base URL to extract components
         $parsed_url = parse_url($base_url);
+        $scheme = $parsed_url['scheme'] ?? 'https';
         $host = $parsed_url['host'] ?? 'mapa.nabezky.sk';
+        $path = $parsed_url['path'] ?? '';
         
-        // Build the correct URL format based on reference code
-        if (strpos($host, 'nabezky.sk') !== false) {
-            // Use the correct subdomain format
-            $site = 'mapa';
-        } else {
-            $site = 'devmapa';
+        // Build the URL using the configured base URL
+        $url = $scheme . '://' . $host . $path;
+        
+        // Add voucher and email parameters
+        $params = array(
+            'voucher' => $voucher_number,
+            'email' => $email
+        );
+        
+        // Add existing query parameters if any
+        if (isset($parsed_url['query'])) {
+            parse_str($parsed_url['query'], $existing_params);
+            $params = array_merge($existing_params, $params);
         }
         
-        $url = 'https://' . $site . '.nabezky.sk?voucher=' . urlencode($voucher_number) . '&email=' . urlencode($email);
+        $url .= '?' . http_build_query($params);
         
         return $url;
     }

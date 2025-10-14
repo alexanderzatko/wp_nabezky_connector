@@ -142,18 +142,16 @@ class WP_Nabezky_API {
      * @return string The complete map URL
      */
     public function get_map_access_url($voucher_number, $email, $params = array()) {
-        // Parse the base URL to determine the correct domain
+        // Parse the base URL to extract components
         $parsed_url = parse_url($this->map_url);
+        $scheme = $parsed_url['scheme'] ?? 'https';
         $host = $parsed_url['host'] ?? 'mapa.nabezky.sk';
+        $path = $parsed_url['path'] ?? '';
         
-        // Build the correct URL format based on reference code
-        if (strpos($host, 'nabezky.sk') !== false) {
-            // Use the correct subdomain format
-            $site = 'mapa';
-        } else {
-            $site = 'devmapa';
-        }
+        // Build the URL using the configured base URL
+        $url = $scheme . '://' . $host . $path;
         
+        // Add voucher and email parameters
         $url_params = array(
             'voucher' => $voucher_number,
             'email' => $email
@@ -162,7 +160,15 @@ class WP_Nabezky_API {
         // Add any additional parameters
         $url_params = array_merge($url_params, $params);
         
-        return 'https://' . $site . '.nabezky.sk?' . http_build_query($url_params);
+        // Add existing query parameters if any
+        if (isset($parsed_url['query'])) {
+            parse_str($parsed_url['query'], $existing_params);
+            $url_params = array_merge($existing_params, $url_params);
+        }
+        
+        $url .= '?' . http_build_query($url_params);
+        
+        return $url;
     }
     
     /**
