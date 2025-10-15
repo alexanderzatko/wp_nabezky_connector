@@ -294,10 +294,10 @@ msgid "Checking status..."
 msgstr ""
 
 msgid "Your Na bežky! map access information"
-msgstr ""
+msgstr "Bonus: access to Na bežky map"
 
 msgid "As a bonus with your purchase, you now have access to the premium Na bežky map with cross-country trails grooming status and other useful information. You can access the map immediately using the button below, or save the details from the email we sent you for later use."
-msgstr ""
+msgstr "As a bonus to your purchase, you have also gained access to the premium Na bežky map, showing the grooming status of cross-country trails and other useful information. You can visit the map immediately using the button below, or later using the information in the email message we sent you."
 
 msgid "Registered User Bonus!"
 msgstr ""
@@ -369,10 +369,13 @@ msgstr ""
 
 # New email strings
 msgid "This email contains your Na bežky map access details. As a bonus with your purchase, you now have access to the premium map with cross-country trails grooming status and other useful information."
-msgstr ""
+msgstr "As a bonus to your order #%d on %s you have also gained access to the premium map, showing the grooming status of cross-country trails and other useful information. %s"
 
 msgid "Your Voucher Information"
-msgstr ""
+msgstr "Your Voucher Information"
+
+msgid "The vouchers listed below are valid for 3 days from activation on the map page."
+msgstr "The vouchers listed below are valid for 3 days from activation on the map page."
 
 # Debug strings
 msgid "Debug Information"

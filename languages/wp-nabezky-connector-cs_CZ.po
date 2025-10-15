@@ -298,10 +298,10 @@ msgid "Checking status..."
 msgstr "Kontrola stavu..."
 
 msgid "Your Na bežky! map access information"
-msgstr "Vaše informace o přístupu k Na bežky! mapě"
+msgstr "Bonus: přístup k Na bežky mapě"
 
 msgid "As a bonus with your purchase, you now have access to the premium Na bežky map with cross-country trails grooming status and other useful information. You can access the map immediately using the button below, or save the details from the email we sent you for later use."
-msgstr "Jako bonus k vašemu nákupu nyní máte přístup k prémiové Na bežky mapě s informacemi o úpravě běžeckých tratí a dalšími užitečnými informacemi. Můžete přistoupit k mapě okamžitě pomocí tlačítka níže, nebo si uložit detaily z e-mailu, který jsme vám poslali, pro pozdější použití."
+msgstr "Jako bonus k vašemu nákupu jste získali také přístup k prémiové Na bežky mapě, zobrazující stav upravenosti běžeckých tratí a další užitečné informace. Můžete přistoupit k mapě okamžitě pomocí tlačítka níže, nebo později použitím informací v e-mailové zprávě, kterou jsme vám poslali."
 
 msgid "Registered User Bonus!"
 msgstr "Bonus pro registrovaného uživatele!"
@@ -373,10 +373,13 @@ msgstr "Callback úspěšně zpracován"
 
 # New email strings
 msgid "This email contains your Na bežky map access details. As a bonus with your purchase, you now have access to the premium map with cross-country trails grooming status and other useful information."
-msgstr "Tento e-mail obsahuje detaily o přístupu k Na bežky mapě. Jako bonus k vašemu nákupu nyní máte přístup k prémiové mapě s informacemi o úpravě běžeckých tratí a dalšími užitečnými informacemi."
+msgstr "Jako bonus k vaší objednávce #%d na stránce %s jste získali také přístup k prémiové mapě, zobrazující stav upravenosti běžeckých tratí a další užitečné informace. %s"
 
 msgid "Your Voucher Information"
 msgstr "Informace o vašem poukazu"
+
+msgid "The vouchers listed below are valid for 3 days from activation on the map page."
+msgstr "Poukázky uvedené níže platí 3 dny od aktivace na stránce mapy."
 
 # Month names
 msgid "January"

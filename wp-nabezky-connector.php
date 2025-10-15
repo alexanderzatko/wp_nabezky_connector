@@ -616,7 +616,19 @@ class WP_Nabezky_Connector {
         
         $message = '<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">';
         $message .= '<h2>' . __('Thank you for supporting cross-country skiing!', 'wp-nabezky-connector') . '</h2>';
-        $message .= '<p>' . __('This email contains your Na bežky map access details. As a bonus with your purchase, you now have access to the premium map with cross-country trails grooming status and other useful information.', 'wp-nabezky-connector') . '</p>';
+        
+        // Prepare dynamic values for the email template
+        $order_number = $order_data['order_id'];
+        $eshop_url = $order_data['wp_site_url'];
+        $voucher_count = isset($voucher_data['vouchers']) ? count($voucher_data['vouchers']) : 0;
+        $voucher_message = ($voucher_count > 1) ? __('The vouchers listed below are valid for 3 days from activation on the map page.', 'wp-nabezky-connector') : '';
+        
+        $message .= '<p>' . sprintf(
+            __('This email contains your Na bežky map access details. As a bonus with your purchase, you now have access to the premium map with cross-country trails grooming status and other useful information.', 'wp-nabezky-connector'),
+            $order_number,
+            $eshop_url,
+            $voucher_message
+        ) . '</p>';
         
         // Check if user is registered in Nabezky
         if (isset($voucher_data['is_registered_user']) && $voucher_data['is_registered_user']) {
