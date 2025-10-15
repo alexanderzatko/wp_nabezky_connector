@@ -96,7 +96,7 @@ if (class_exists('WooCommerce')) {
                            name="nabezky_access_token" 
                            value="<?php echo esc_attr($options['nabezky_access_token'] ?? ''); ?>" 
                            class="regular-text" />
-                    <p class="description"><?php _e('Access token for authenticating with Nabezky API (communicated out-of-band)', 'wp-nabezky-connector'); ?></p>
+                    <p class="description"><?php _e('Access token for authenticating with Nabezky API', 'wp-nabezky-connector'); ?></p>
                 </td>
             </tr>
             

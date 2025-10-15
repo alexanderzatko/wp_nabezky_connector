@@ -45,8 +45,8 @@ msgstr "URL, kde si zákazníci budou moci zobrazit mapu (může být mapa.nabez
 msgid "Access Token"
 msgstr "Přístupový token"
 
-msgid "Access token for authenticating with Nabezky API (communicated out-of-band)"
-msgstr "Přístupový token pro autentifikaci s Na bežky API (komunikovaný mimo pásmo)"
+msgid "Access token for authenticating with Nabezky API"
+msgstr "Přístupový token pro autentifikaci s Na bežky API"
 
 msgid "Callback URL"
 msgstr "Callback URL"
@@ -324,8 +324,17 @@ msgstr "3denní přístup"
 msgid "Expires:"
 msgstr "Vyprší:"
 
+msgid "when first used"
+msgstr "při prvním použití"
+
+msgid "3 days after first use"
+msgstr "3 dny po prvním použití"
+
 msgid "Access Map Now"
 msgstr "Přístup k mapě nyní"
+
+msgid "Visit map now"
+msgstr "Navštívit mapu nyní"
 
 # Shortcode strings
 msgid "Order ID is required."

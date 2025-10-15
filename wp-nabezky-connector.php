@@ -635,17 +635,20 @@ class WP_Nabezky_Connector {
                 $message .= '<p><strong>' . __('Access Type:', 'wp-nabezky-connector') . '</strong> ' . 
                            ($voucher['type'] === 'seasonal' ? __('Seasonal Pass', 'wp-nabezky-connector') : __('3-Day Access', 'wp-nabezky-connector')) . '</p>';
                 
-                if (isset($voucher['expires'])) {
-                    $message .= '<p><strong>' . __('Expires:', 'wp-nabezky-connector') . '</strong> ' . $this->format_localized_date($voucher['expires']) . '</p>';
+                // Handle expiration display - show '3 days after first use' for NULL expiration dates
+                $message .= '<p><strong>' . __('Expires:', 'wp-nabezky-connector') . '</strong> ';
+                if (isset($voucher['expires']) && $voucher['expires'] !== null) {
+                    $message .= $this->format_localized_date($voucher['expires']);
+                } else {
+                    $message .= __('3 days after first use', 'wp-nabezky-connector');
                 }
+                $message .= '</p>';
                 
-                // Add activation link for first voucher
-                if ($index === 0) {
-                    $options = get_option('wp_nabezky_connector_options');
-                    $map_url = $this->build_map_access_url($options['nabezky_map_url'], $voucher['number'], $voucher_data['email']);
-                    $message .= '<p><a href="' . esc_url($map_url) . '" style="background: #007cba; color: white; padding: 10px 20px; text-decoration: none; border-radius: 3px; display: inline-block; margin-top: 10px;">' . 
-                               __('Access Map Now', 'wp-nabezky-connector') . '</a></p>';
-                }
+                // Add activation link for each voucher
+                $options = get_option('wp_nabezky_connector_options');
+                $map_url = $this->build_map_access_url($options['nabezky_map_url'], $voucher['number'], $voucher_data['email']);
+                $message .= '<p><a href="' . esc_url($map_url) . '" style="background: #007cba; color: white; padding: 10px 20px; text-decoration: none; border-radius: 3px; display: inline-block; margin-top: 10px;">' . 
+                           __('Visit map now', 'wp-nabezky-connector') . '</a></p>';
                 
                 $message .= '</div>';
             }
@@ -792,15 +795,20 @@ class WP_Nabezky_Connector {
                 echo '<strong>' . __('Voucher Number:', 'wp-nabezky-connector') . '</strong> ' . esc_html($voucher['number']) . '<br>';
                 echo '<strong>' . __('Access Type:', 'wp-nabezky-connector') . '</strong> ' . 
                      ($voucher['type'] === 'seasonal' ? __('Seasonal Pass', 'wp-nabezky-connector') : __('3-Day Access', 'wp-nabezky-connector')) . '<br>';
-                if (isset($voucher['expires'])) {
-                    echo '<strong>' . __('Expires:', 'wp-nabezky-connector') . '</strong> ' . $this->format_localized_date($voucher['expires']);
-                }
                 
-                if ($index === 0) {
-                    $activate_url = $this->build_map_access_url($map_url, $voucher['number'], $voucher_data['email']);
-                    echo '<br><a href="' . esc_url($activate_url) . '" target="_blank" style="background: #007cba; color: white; padding: 10px 20px; text-decoration: none; border-radius: 3px; display: inline-block; margin-top: 10px;">' . 
-                         __('Access Map Now', 'wp-nabezky-connector') . '</a>';
+                // Handle expiration display - show '3 days after first use' for NULL expiration dates
+                echo '<strong>' . __('Expires:', 'wp-nabezky-connector') . '</strong> ';
+                if (isset($voucher['expires']) && $voucher['expires'] !== null) {
+                    echo $this->format_localized_date($voucher['expires']);
+                } else {
+                    echo __('3 days after first use', 'wp-nabezky-connector');
                 }
+                echo '<br>';
+                
+                // Add activation link for each voucher
+                $activate_url = $this->build_map_access_url($map_url, $voucher['number'], $voucher_data['email']);
+                echo '<br><a href="' . esc_url($activate_url) . '" target="_blank" style="background: #007cba; color: white; padding: 10px 20px; text-decoration: none; border-radius: 3px; display: inline-block; margin-top: 10px;">' . 
+                     __('Visit map now', 'wp-nabezky-connector') . '</a>';
                 echo '</div>';
             }
         }

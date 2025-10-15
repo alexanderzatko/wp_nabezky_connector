@@ -41,7 +41,7 @@ msgstr ""
 msgid "Access Token"
 msgstr ""
 
-msgid "Access token for authenticating with Nabezky API (communicated out-of-band)"
+msgid "Access token for authenticating with Nabezky API"
 msgstr ""
 
 msgid "Callback URL"
@@ -320,7 +320,16 @@ msgstr ""
 msgid "Expires:"
 msgstr ""
 
+msgid "when first used"
+msgstr ""
+
+msgid "3 days after first use"
+msgstr ""
+
 msgid "Access Map Now"
+msgstr ""
+
+msgid "Visit map now"
 msgstr ""
 
 # Shortcode strings
