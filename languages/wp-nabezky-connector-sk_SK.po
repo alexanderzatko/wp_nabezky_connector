@@ -417,3 +417,145 @@ msgstr "November"
 
 msgid "December"
 msgstr "December"
+
+# Test connection diagnostics strings
+msgid "Test Success"
+msgstr "Test úspešný"
+
+msgid "Test Failed"
+msgstr "Test zlyhal"
+
+msgid "Test Error"
+msgstr "Chyba testu"
+
+msgid "Response Time"
+msgstr "Čas odozvy"
+
+msgid "Test Results"
+msgstr "Výsledky testov"
+
+msgid "Configuration Validation"
+msgstr "Overenie konfigurácie"
+
+msgid "Server Connectivity"
+msgstr "Pripojenie k serveru"
+
+msgid "Endpoint Availability"
+msgstr "Dostupnosť koncového bodu"
+
+msgid "Authentication Test"
+msgstr "Test autentifikácie"
+
+msgid "Errors:"
+msgstr "Chyby:"
+
+msgid "Warnings:"
+msgstr "Upozornenia:"
+
+msgid "API URL is not configured"
+msgstr "URL API nie je nakonfigurované"
+
+msgid "API URL format is invalid"
+msgstr "Formát URL API je neplatný"
+
+msgid "Map URL is not configured"
+msgstr "URL mapy nie je nakonfigurované"
+
+msgid "Map URL format is invalid"
+msgstr "Formát URL mapy je neplatný"
+
+msgid "Access token is not configured"
+msgstr "Prístupový token nie je nakonfigurovaný"
+
+msgid "Plugin is not enabled"
+msgstr "Plugin nie je povolený"
+
+msgid "No Nabezky products are configured"
+msgstr "Nie sú nakonfigurované žiadne produkty Nabezky"
+
+msgid "Connection failed"
+msgstr "Pripojenie zlyhalo"
+
+msgid "Server responded with status code"
+msgstr "Server odpovedal so stavovým kódom"
+
+msgid "Server is reachable"
+msgstr "Server je dostupný"
+
+msgid "Endpoint request failed"
+msgstr "Požiadavka na koncový bod zlyhala"
+
+msgid "Endpoint is accessible"
+msgstr "Koncový bod je dostupný"
+
+msgid "Endpoint exists but OPTIONS method not supported (this is normal)"
+msgstr "Koncový bod existuje, ale metóda OPTIONS nie je podporovaná (to je normálne)"
+
+msgid "Endpoint responded with status code"
+msgstr "Koncový bod odpovedal so stavovým kódom"
+
+msgid "Endpoint may not be available"
+msgstr "Koncový bod nemusí byť dostupný"
+
+msgid "Authentication test failed"
+msgstr "Test autentifikácie zlyhal"
+
+msgid "Authentication successful"
+msgstr "Autentifikácia úspešná"
+
+msgid "Valid JSON response"
+msgstr "Platná JSON odpoveď"
+
+msgid "Response is not valid JSON"
+msgstr "Odpoveď nie je platný JSON"
+
+msgid "Authentication failed - Invalid access token"
+msgstr "Autentifikácia zlyhala - Neplatný prístupový token"
+
+msgid "Authentication failed"
+msgstr "Autentifikácia zlyhala"
+
+msgid "Access forbidden - Token may not have required permissions"
+msgstr "Prístup zakázaný - Token nemusí mať požadované oprávnenia"
+
+msgid "Access forbidden"
+msgstr "Prístup zakázaný"
+
+msgid "Client error (HTTP %d) - Check request format"
+msgstr "Chyba klienta (HTTP %d) - Skontrolujte formát požiadavky"
+
+msgid "Client error"
+msgstr "Chyba klienta"
+
+msgid "Server error (HTTP %d) - API server issue"
+msgstr "Chyba servera (HTTP %d) - Problém s API serverom"
+
+msgid "Server error"
+msgstr "Chyba servera"
+
+msgid "Unexpected response code"
+msgstr "Neočakávaný stavový kód"
+
+msgid "Unexpected response"
+msgstr "Neočakávaná odpoveď"
+
+msgid "Configuration validation failed"
+msgstr "Overenie konfigurácie zlyhalo"
+
+msgid "Basic connectivity test failed"
+msgstr "Základný test pripojenia zlyhal"
+
+msgid "Endpoint availability test failed"
+msgstr "Test dostupnosti koncového bodu zlyhal"
+
+msgid "Authentication test completed with warnings"
+msgstr "Test autentifikácie dokončený s upozorneniami"
+
+msgid "All connection tests passed successfully"
+msgstr "Všetky testy pripojenia prešli úspešne"
+
+msgid "Connection test failed with unexpected error"
+msgstr "Test pripojenia zlyhal s neočakávanou chybou"
+
+msgid "Unexpected error"
+msgstr "Neočakávaná chyba"

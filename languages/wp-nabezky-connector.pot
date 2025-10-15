@@ -440,3 +440,145 @@ msgstr ""
 
 msgid "Order #%d not found."
 msgstr ""
+
+# Test connection diagnostics strings
+msgid "Test Success"
+msgstr ""
+
+msgid "Test Failed"
+msgstr ""
+
+msgid "Test Error"
+msgstr ""
+
+msgid "Response Time"
+msgstr ""
+
+msgid "Test Results"
+msgstr ""
+
+msgid "Configuration Validation"
+msgstr ""
+
+msgid "Server Connectivity"
+msgstr ""
+
+msgid "Endpoint Availability"
+msgstr ""
+
+msgid "Authentication Test"
+msgstr ""
+
+msgid "Errors:"
+msgstr ""
+
+msgid "Warnings:"
+msgstr ""
+
+msgid "API URL is not configured"
+msgstr ""
+
+msgid "API URL format is invalid"
+msgstr ""
+
+msgid "Map URL is not configured"
+msgstr ""
+
+msgid "Map URL format is invalid"
+msgstr ""
+
+msgid "Access token is not configured"
+msgstr ""
+
+msgid "Plugin is not enabled"
+msgstr ""
+
+msgid "No Nabezky products are configured"
+msgstr ""
+
+msgid "Connection failed"
+msgstr ""
+
+msgid "Server responded with status code"
+msgstr ""
+
+msgid "Server is reachable"
+msgstr ""
+
+msgid "Endpoint request failed"
+msgstr ""
+
+msgid "Endpoint is accessible"
+msgstr ""
+
+msgid "Endpoint exists but OPTIONS method not supported (this is normal)"
+msgstr ""
+
+msgid "Endpoint responded with status code"
+msgstr ""
+
+msgid "Endpoint may not be available"
+msgstr ""
+
+msgid "Authentication test failed"
+msgstr ""
+
+msgid "Authentication successful"
+msgstr ""
+
+msgid "Valid JSON response"
+msgstr ""
+
+msgid "Response is not valid JSON"
+msgstr ""
+
+msgid "Authentication failed - Invalid access token"
+msgstr ""
+
+msgid "Authentication failed"
+msgstr ""
+
+msgid "Access forbidden - Token may not have required permissions"
+msgstr ""
+
+msgid "Access forbidden"
+msgstr ""
+
+msgid "Client error (HTTP %d) - Check request format"
+msgstr ""
+
+msgid "Client error"
+msgstr ""
+
+msgid "Server error (HTTP %d) - API server issue"
+msgstr ""
+
+msgid "Server error"
+msgstr ""
+
+msgid "Unexpected response code"
+msgstr ""
+
+msgid "Unexpected response"
+msgstr ""
+
+msgid "Configuration validation failed"
+msgstr ""
+
+msgid "Basic connectivity test failed"
+msgstr ""
+
+msgid "Endpoint availability test failed"
+msgstr ""
+
+msgid "Authentication test completed with warnings"
+msgstr ""
+
+msgid "All connection tests passed successfully"
+msgstr ""
+
+msgid "Connection test failed with unexpected error"
+msgstr ""
+
+msgid "Unexpected error"
+msgstr ""

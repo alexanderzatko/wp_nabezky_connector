@@ -239,7 +239,7 @@ class WP_Nabezky_API {
             
             if (!$config_test['success']) {
                 $test_results['errors'] = array_merge($test_results['errors'], $config_test['errors']);
-                $test_results['message'] = 'Configuration validation failed';
+                $test_results['message'] = __('Configuration validation failed', 'wp-nabezky-connector');
                 return $test_results;
             }
             
@@ -249,7 +249,7 @@ class WP_Nabezky_API {
             
             if (!$connectivity_test['success']) {
                 $test_results['errors'] = array_merge($test_results['errors'], $connectivity_test['errors']);
-                $test_results['message'] = 'Basic connectivity test failed';
+                $test_results['message'] = __('Basic connectivity test failed', 'wp-nabezky-connector');
                 return $test_results;
             }
             
@@ -259,28 +259,18 @@ class WP_Nabezky_API {
             
             if (!$endpoint_test['success']) {
                 $test_results['errors'] = array_merge($test_results['errors'], $endpoint_test['errors']);
-                $test_results['message'] = 'Endpoint availability test failed';
+                $test_results['message'] = __('Endpoint availability test failed', 'wp-nabezky-connector');
                 return $test_results;
-            }
-            
-            // Test 4: Authentication validation
-            $auth_test = $this->test_authentication();
-            $test_results['tests']['authentication'] = $auth_test;
-            
-            if (!$auth_test['success']) {
-                $test_results['warnings'] = array_merge($test_results['warnings'], $auth_test['warnings']);
-                $test_results['message'] = 'Authentication test completed with warnings';
-            } else {
-                $test_results['message'] = 'All connection tests passed successfully';
             }
             
             // Calculate total response time
             $test_results['response_time'] = round((microtime(true) - $start_time) * 1000, 2);
             $test_results['success'] = true;
+            $test_results['message'] = __('All connection tests passed successfully', 'wp-nabezky-connector');
             
         } catch (Exception $e) {
-            $test_results['errors'][] = 'Unexpected error: ' . $e->getMessage();
-            $test_results['message'] = 'Connection test failed with unexpected error';
+            $test_results['errors'][] = sprintf(__('Unexpected error: %s', 'wp-nabezky-connector'), $e->getMessage());
+            $test_results['message'] = __('Connection test failed with unexpected error', 'wp-nabezky-connector');
             $test_results['response_time'] = round((microtime(true) - $start_time) * 1000, 2);
         }
         
@@ -303,10 +293,10 @@ class WP_Nabezky_API {
         
         // Check API URL
         if (empty($options['nabezky_api_url'])) {
-            $result['errors'][] = 'API URL is not configured';
+            $result['errors'][] = __('API URL is not configured', 'wp-nabezky-connector');
             $result['success'] = false;
         } elseif (!filter_var($options['nabezky_api_url'], FILTER_VALIDATE_URL)) {
-            $result['errors'][] = 'API URL format is invalid';
+            $result['errors'][] = __('API URL format is invalid', 'wp-nabezky-connector');
             $result['success'] = false;
         } else {
             $result['details']['api_url'] = $options['nabezky_api_url'];
@@ -314,10 +304,10 @@ class WP_Nabezky_API {
         
         // Check Map URL
         if (empty($options['nabezky_map_url'])) {
-            $result['errors'][] = 'Map URL is not configured';
+            $result['errors'][] = __('Map URL is not configured', 'wp-nabezky-connector');
             $result['success'] = false;
         } elseif (!filter_var($options['nabezky_map_url'], FILTER_VALIDATE_URL)) {
-            $result['errors'][] = 'Map URL format is invalid';
+            $result['errors'][] = __('Map URL format is invalid', 'wp-nabezky-connector');
             $result['success'] = false;
         } else {
             $result['details']['map_url'] = $options['nabezky_map_url'];
@@ -325,7 +315,7 @@ class WP_Nabezky_API {
         
         // Check access token
         if (empty($options['nabezky_access_token'])) {
-            $result['errors'][] = 'Access token is not configured';
+            $result['errors'][] = __('Access token is not configured', 'wp-nabezky-connector');
             $result['success'] = false;
         } else {
             $result['details']['token_configured'] = true;
@@ -333,7 +323,7 @@ class WP_Nabezky_API {
         
         // Check plugin enabled status
         if (!$options['enabled']) {
-            $result['errors'][] = 'Plugin is not enabled';
+            $result['errors'][] = __('Plugin is not enabled', 'wp-nabezky-connector');
             $result['success'] = false;
         } else {
             $result['details']['plugin_enabled'] = true;
@@ -341,7 +331,7 @@ class WP_Nabezky_API {
         
         // Check configured products
         if (empty($options['nabezky_products'])) {
-            $result['errors'][] = 'No Nabezky products are configured';
+            $result['errors'][] = __('No Nabezky products are configured', 'wp-nabezky-connector');
             $result['success'] = false;
         } else {
             $result['details']['products_configured'] = count($options['nabezky_products']);
@@ -377,7 +367,7 @@ class WP_Nabezky_API {
         $response = wp_remote_request($api_url, $args);
         
         if (is_wp_error($response)) {
-            $result['errors'][] = 'Connection failed: ' . $response->get_error_message();
+            $result['errors'][] = __('Connection failed', 'wp-nabezky-connector') . ': ' . $response->get_error_message();
             return $result;
         }
         
@@ -388,9 +378,9 @@ class WP_Nabezky_API {
         // Accept various success codes
         if ($response_code >= 200 && $response_code < 400) {
             $result['success'] = true;
-            $result['details']['connection_status'] = 'Server is reachable';
+            $result['details']['connection_status'] = __('Server is reachable', 'wp-nabezky-connector');
         } else {
-            $result['errors'][] = "Server responded with status code: $response_code";
+            $result['errors'][] = sprintf(__('Server responded with status code: %d', 'wp-nabezky-connector'), $response_code);
         }
         
         return $result;
@@ -428,7 +418,7 @@ class WP_Nabezky_API {
         $response = wp_remote_request($endpoint, $args);
         
         if (is_wp_error($response)) {
-            $result['errors'][] = 'Endpoint request failed: ' . $response->get_error_message();
+            $result['errors'][] = __('Endpoint request failed', 'wp-nabezky-connector') . ': ' . $response->get_error_message();
             return $result;
         }
         
@@ -439,15 +429,15 @@ class WP_Nabezky_API {
         // Accept various response codes (some APIs don't support OPTIONS)
         if ($response_code >= 200 && $response_code < 500) {
             $result['success'] = true;
-            $result['details']['endpoint_status'] = 'Endpoint is accessible';
+            $result['details']['endpoint_status'] = __('Endpoint is accessible', 'wp-nabezky-connector');
             
             // Check if it's a proper API response
             if ($response_code === 405) {
-                $result['details']['note'] = 'Endpoint exists but OPTIONS method not supported (this is normal)';
+                $result['details']['note'] = __('Endpoint exists but OPTIONS method not supported (this is normal)', 'wp-nabezky-connector');
             }
         } else {
-            $result['errors'][] = "Endpoint responded with status code: $response_code";
-            $result['details']['endpoint_status'] = 'Endpoint may not be available';
+            $result['errors'][] = sprintf(__('Endpoint responded with status code: %d', 'wp-nabezky-connector'), $response_code);
+            $result['details']['endpoint_status'] = __('Endpoint may not be available', 'wp-nabezky-connector');
         }
         
         return $result;

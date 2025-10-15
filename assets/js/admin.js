@@ -12,7 +12,7 @@ jQuery(document).ready(function($) {
         
         // Initialize: hide the token if there's a value
         if (isHidden) {
-            $tokenField.val('••••••••••••••••••••••••••••••••');
+            $tokenField.hide();
             $toggleButton.text(nabezky_admin.i18n.show);
         } else {
             $toggleButton.text(nabezky_admin.i18n.hide);
@@ -21,16 +21,16 @@ jQuery(document).ready(function($) {
         $toggleButton.on('click', function() {
             if (isHidden) {
                 // Show the token
-                $tokenField.val(originalValue);
+                $tokenField.show().val(originalValue);
                 $toggleButton.text(nabezky_admin.i18n.hide);
                 isHidden = false;
             } else {
                 // Hide the token - store current value before hiding
                 var currentValue = $tokenField.val();
-                if (currentValue !== '••••••••••••••••••••••••••••••••') {
+                if (currentValue && currentValue.length > 0) {
                     originalValue = currentValue;
                 }
-                $tokenField.val('••••••••••••••••••••••••••••••••');
+                $tokenField.hide();
                 $toggleButton.text(nabezky_admin.i18n.show);
                 isHidden = true;
             }
@@ -107,12 +107,17 @@ jQuery(document).ready(function($) {
                 html += '<p><strong>' + nabezky_admin.i18n.responseTime + '</strong> ' + response.response_time + 'ms</p>';
             }
             
-            // Individual test results
+            // Individual test results (excluding authentication test)
             if (response.tests && Object.keys(response.tests).length > 0) {
                 html += '<h4>' + nabezky_admin.i18n.testResults + '</h4>';
                 html += '<div class="test-details" style="margin-top: 10px;">';
                 
                 $.each(response.tests, function(testName, testResult) {
+                    // Skip authentication test as it will always fail and might confuse users
+                    if (testName === 'authentication') {
+                        return;
+                    }
+                    
                     var testIcon = testResult.success ? '✓' : '✗';
                     var testClass = testResult.success ? 'color: green;' : 'color: red;';
                     
@@ -155,7 +160,7 @@ jQuery(document).ready(function($) {
             // Global errors
             if (response.errors && response.errors.length > 0) {
                 html += '<div style="background: #fbeaea; border: 1px solid #dc3232; padding: 10px; margin-top: 10px; border-radius: 3px;">';
-                html += '<h4 style="color: #dc3232; margin: 0 0 5px 0;">Errors:</h4>';
+                html += '<h4 style="color: #dc3232; margin: 0 0 5px 0;">' + nabezky_admin.i18n.errors + '</h4>';
                 html += '<ul style="margin: 0; color: #dc3232;">';
                 $.each(response.errors, function(index, error) {
                     html += '<li>' + error + '</li>';
@@ -167,7 +172,7 @@ jQuery(document).ready(function($) {
             // Global warnings
             if (response.warnings && response.warnings.length > 0) {
                 html += '<div style="background: #fff8e5; border: 1px solid #ffb900; padding: 10px; margin-top: 10px; border-radius: 3px;">';
-                html += '<h4 style="color: #ffb900; margin: 0 0 5px 0;">Warnings:</h4>';
+                html += '<h4 style="color: #ffb900; margin: 0 0 5px 0;">' + nabezky_admin.i18n.warnings + '</h4>';
                 html += '<ul style="margin: 0; color: #ffb900;">';
                 $.each(response.warnings, function(index, warning) {
                     html += '<li>' + warning + '</li>';
@@ -206,10 +211,10 @@ jQuery(document).ready(function($) {
         function formatTestName(name) {
             var formatted = name.charAt(0).toUpperCase() + name.slice(1);
             switch(name) {
-                case 'configuration': return 'Configuration Validation';
-                case 'connectivity': return 'Server Connectivity';
-                case 'endpoint': return 'Endpoint Availability';
-                case 'authentication': return 'Authentication Test';
+                case 'configuration': return nabezky_admin.i18n.configurationValidation;
+                case 'connectivity': return nabezky_admin.i18n.serverConnectivity;
+                case 'endpoint': return nabezky_admin.i18n.endpointAvailability;
+                case 'authentication': return nabezky_admin.i18n.authentication;
                 default: return formatted;
             }
         }
@@ -221,15 +226,16 @@ jQuery(document).ready(function($) {
             // Check if plugin is enabled
             if ($('#enabled').is(':checked')) {
                 // Check if access token is provided
-                var tokenValue = $('#nabezky_access_token').val();
-                // If token is hidden (showing dots), check if there's an original value
-                if (tokenValue === '••••••••••••••••••••••••••••••••') {
-                    // Token is hidden, check if there was an original value
-                    var hasToken = originalValue && originalValue.length > 0;
-                    if (!hasToken) {
-                        errors.push(nabezky_admin.i18n.accessTokenRequired);
-                    }
-                } else if (!tokenValue || !tokenValue.trim()) {
+                var tokenValue = '';
+                if (isHidden) {
+                    // Token is hidden, check if there's an original value
+                    tokenValue = originalValue;
+                } else {
+                    // Token is visible, get current value
+                    tokenValue = $('#nabezky_access_token').val();
+                }
+                
+                if (!tokenValue || !tokenValue.trim()) {
                     errors.push(nabezky_admin.i18n.accessTokenRequired);
                 }
                 
