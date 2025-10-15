@@ -146,10 +146,11 @@ class WP_Nabezky_API {
         $parsed_url = parse_url($this->map_url);
         $scheme = $parsed_url['scheme'] ?? 'https';
         $host = $parsed_url['host'] ?? 'mapa.nabezky.sk';
+        $port = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : '';
         $path = $parsed_url['path'] ?? '';
         
         // Build the URL using the configured base URL
-        $url = $scheme . '://' . $host . $path;
+        $url = $scheme . '://' . $host . $port . $path;
         
         // Add voucher and email parameters
         $url_params = array(
