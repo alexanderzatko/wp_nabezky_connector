@@ -56,7 +56,10 @@ if (class_exists('WooCommerce')) {
 <div class="wrap">
     <h1><?php echo esc_html(get_admin_page_title()); ?> <span style="font-size: 14px; color: #666; font-weight: normal;">v<?php echo WP_NABEZKY_CONNECTOR_VERSION; ?></span></h1>
     
-    <form method="post" action="" autocomplete="off">
+    <form method="post" action="" autocomplete="off" data-form-type="other">
+        <!-- Hidden field to prevent browser password detection -->
+        <input type="text" name="fake_username" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="password" name="fake_password" style="display:none" tabindex="-1" autocomplete="off">
         <table class="form-table">
             <tr>
                 <th scope="row">
@@ -91,12 +94,17 @@ if (class_exists('WooCommerce')) {
                     <label for="nabezky_access_token"><?php _e('Access Token', 'wp-nabezky-connector'); ?></label>
                 </th>
                 <td>
-                    <input type="password" 
+                    <input type="text" 
                            id="nabezky_access_token" 
                            name="nabezky_access_token" 
                            value="<?php echo esc_attr($options['nabezky_access_token'] ?? ''); ?>" 
                            class="regular-text"
-                           autocomplete="off" />
+                           autocomplete="off"
+                           data-form-type="other" 
+                           placeholder="<?php _e('Enter access token', 'wp-nabezky-connector'); ?>" />
+                    <button type="button" id="toggle-token-visibility" class="button">
+                        <?php _e('Show', 'wp-nabezky-connector'); ?>
+                    </button>
                     <p class="description"><?php _e('Access token for authenticating with Nabezky API', 'wp-nabezky-connector'); ?></p>
                 </td>
             </tr>

@@ -5,18 +5,34 @@ jQuery(document).ready(function($) {
     if ($('body').hasClass('settings_page_wp-nabezky-connector')) {
         
         // Token visibility toggle
-        $('#nabezky_access_token').after('<button type="button" id="toggle-token-visibility" class="button">' + nabezky_admin.i18n.show + '</button>');
+        var $tokenField = $('#nabezky_access_token');
+        var $toggleButton = $('#toggle-token-visibility');
+        var originalValue = $tokenField.val();
+        var isHidden = originalValue.length > 0; // Hide by default if there's a value
         
-        $('#toggle-token-visibility').on('click', function() {
-            var $tokenField = $('#nabezky_access_token');
-            var $button = $(this);
-            
-            if ($tokenField.attr('type') === 'password') {
-                $tokenField.attr('type', 'text');
-                $button.text(nabezky_admin.i18n.hide);
+        // Initialize: hide the token if there's a value
+        if (isHidden) {
+            $tokenField.val('••••••••••••••••••••••••••••••••');
+            $toggleButton.text(nabezky_admin.i18n.show);
+        } else {
+            $toggleButton.text(nabezky_admin.i18n.hide);
+        }
+        
+        $toggleButton.on('click', function() {
+            if (isHidden) {
+                // Show the token
+                $tokenField.val(originalValue);
+                $toggleButton.text(nabezky_admin.i18n.hide);
+                isHidden = false;
             } else {
-                $tokenField.attr('type', 'password');
-                $button.text(nabezky_admin.i18n.show);
+                // Hide the token - store current value before hiding
+                var currentValue = $tokenField.val();
+                if (currentValue !== '••••••••••••••••••••••••••••••••') {
+                    originalValue = currentValue;
+                }
+                $tokenField.val('••••••••••••••••••••••••••••••••');
+                $toggleButton.text(nabezky_admin.i18n.show);
+                isHidden = true;
             }
         });
         
@@ -205,7 +221,15 @@ jQuery(document).ready(function($) {
             // Check if plugin is enabled
             if ($('#enabled').is(':checked')) {
                 // Check if access token is provided
-                if (!$('#nabezky_access_token').val().trim()) {
+                var tokenValue = $('#nabezky_access_token').val();
+                // If token is hidden (showing dots), check if there's an original value
+                if (tokenValue === '••••••••••••••••••••••••••••••••') {
+                    // Token is hidden, check if there was an original value
+                    var hasToken = originalValue && originalValue.length > 0;
+                    if (!hasToken) {
+                        errors.push(nabezky_admin.i18n.accessTokenRequired);
+                    }
+                } else if (!tokenValue || !tokenValue.trim()) {
                     errors.push(nabezky_admin.i18n.accessTokenRequired);
                 }
                 
