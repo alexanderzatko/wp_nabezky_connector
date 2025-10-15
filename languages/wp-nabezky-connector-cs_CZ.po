@@ -113,7 +113,7 @@ msgid "Customer receives voucher information via email and on the thank you page
 msgstr "Zákazník dostane informace o poukazech e-mailem a na stránce děkujeme"
 
 msgid "Customer can use voucher numbers to access the Nabezky interactive map"
-msgstr "Zákazník může použít čísla poukazů na přístup k interaktivní Na bežky mapě"
+msgstr "Zákazník může použít čísla poukazů na přístup k interaktivní mapě Na bežky"
 
 msgid "Voucher Types"
 msgstr "Typy poukazů"
@@ -176,7 +176,7 @@ msgid "Map Access Options"
 msgstr "Možnosti přístupu k mapě"
 
 msgid "Configure where customers will access the Nabezky map:"
-msgstr "Nakonfigurujte, kde si zákazníci budou moci zobrazit Na bežky mapu:"
+msgstr "Nakonfigurujte, kde si zákazníci budou moci zobrazit mapu Na bežky:"
 
 msgid "Direct Access:"
 msgstr "Přímý přístup:"
@@ -277,7 +277,7 @@ msgstr "Klikněte pro kopírování"
 
 # Email and voucher strings
 msgid "Your Nabezky Map Access"
-msgstr "Váš přístup k Na bežky mapě"
+msgstr "Váš přístup k mapě Na bežky"
 
 msgid "Thank you for supporting cross-country skiing!"
 msgstr "Děkujeme za podporu běžeckého lyžování!"
@@ -295,16 +295,16 @@ msgid "Processing Your Map Access"
 msgstr "Zpracování vašeho přístupu k mapě"
 
 msgid "We are processing your Nabezky map access. You will receive an email shortly with your voucher details."
-msgstr "Zpracováváme váš přístup k Na bežky mapě. Brzy dostanete e-mail s detaily vašeho poukazu."
+msgstr "Zpracováváme váš přístup k mapě Na bežky. Brzy dostanete e-mail s detaily vašeho poukazu."
 
 msgid "Checking status..."
 msgstr "Kontrola stavu..."
 
-msgid "Your Na bežky! map access information"
-msgstr "Bonus: přístup k Na bežky mapě"
+msgid "Your Na bežky map access information"
+msgstr "Bonus: přístup k mapě Na bežky"
 
-msgid "As a bonus with your purchase, you now have access to the premium Na bežky map with cross-country trails grooming status and other useful information. You can access the map immediately using the button below, or save the details from the email we sent you for later use."
-msgstr "Jako bonus k vašemu nákupu jste získali také přístup k prémiové Na bežky mapě, zobrazující stav upravenosti běžeckých tratí a další užitečné informace. Můžete přistoupit k mapě okamžitě pomocí tlačítka níže, nebo později použitím informací v e-mailové zprávě, kterou jsme vám poslali."
+msgid "As a bonus with your purchase, you now have access to the premium mapa Na bežky with cross-country trails grooming status and other useful information. You can access the map immediately using the button below, or save the details from the email we sent you for later use."
+msgstr "Jako bonus k vašemu nákupu jste získali také přístup k prémiové mapě Na bežky, zobrazující stav upravenosti běžeckých tratí a další užitečné informace. Můžete přistoupit k mapě okamžitě pomocí tlačítka níže, nebo později použitím informací v e-mailové zprávě, kterou jsme vám poslali."
 
 msgid "Registered User Bonus!"
 msgstr "Bonus pro registrovaného uživatele!"
@@ -375,7 +375,7 @@ msgid "Callback processed successfully"
 msgstr "Callback úspěšně zpracován"
 
 # New email strings
-msgid "This email contains your Na bežky map access details. As a bonus with your purchase, you now have access to the premium map with cross-country trails grooming status and other useful information."
+msgid "This email contains your mapa Na bežky access details. As a bonus with your purchase, you now have access to the premium map with cross-country trails grooming status and other useful information."
 msgstr "Jako bonus k vaší objednávce #%d na stránce %s jste získali také přístup k prémiové mapě, zobrazující stav upravenosti běžeckých tratí a další užitečné informace. %s"
 
 msgid "Your Voucher Information"

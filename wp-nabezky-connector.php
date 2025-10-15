@@ -669,7 +669,7 @@ class WP_Nabezky_Connector {
         $voucher_message = ($voucher_count > 1) ? __('The vouchers listed below are valid for 3 days from activation on the map page.', 'wp-nabezky-connector') : '';
         
         $message .= '<p>' . sprintf(
-            __('This email contains your Na bežky map access details. As a bonus with your purchase, you now have access to the premium map with cross-country trails grooming status and other useful information.', 'wp-nabezky-connector'),
+            __('This email contains your mapa Na bežky access details. As a bonus with your purchase, you now have access to the premium map with cross-country trails grooming status and other useful information.', 'wp-nabezky-connector'),
             $order_number,
             $eshop_url,
             $voucher_message
@@ -836,8 +836,8 @@ class WP_Nabezky_Connector {
         $map_url = $options['nabezky_map_url'];
         
         echo '<div class="nabezky-voucher-info" style="background: #f0f8ff; border: 2px solid #007cba; padding: 20px; margin: 20px 0; border-radius: 5px;">';
-        echo '<h3>' . __('Your Na bežky! map access information', 'wp-nabezky-connector') . '</h3>';
-        echo '<p>' . __('As a bonus with your purchase, you now have access to the premium Na bežky map with cross-country trails grooming status and other useful information. You can access the map immediately using the button below, or save the details from the email we sent you for later use.', 'wp-nabezky-connector') . '</p>';
+        echo '<h3>' . __('Your Na bežky map access information', 'wp-nabezky-connector') . '</h3>';
+        echo '<p>' . __('As a bonus with your purchase, you now have access to the premium mapa Na bežky with cross-country trails grooming status and other useful information. You can access the map immediately using the button below, or save the details from the email we sent you for later use.', 'wp-nabezky-connector') . '</p>';
         
         // Check if user is registered in Nabezky
         if (isset($voucher_data['is_registered_user']) && $voucher_data['is_registered_user']) {

@@ -113,7 +113,7 @@ msgid "Customer receives voucher information via email and on the thank you page
 msgstr "Zákazník dostane informácie o poukazoch e-mailom a na stránke ďakujeme"
 
 msgid "Customer can use voucher numbers to access the Nabezky interactive map"
-msgstr "Zákazník môže použiť čísla poukazov na prístup k interaktívnej Na bežky mape"
+msgstr "Zákazník môže použiť čísla poukazov na prístup k interaktívnej mape Na bežky"
 
 msgid "Voucher Types"
 msgstr "Typy poukazov"
@@ -176,7 +176,7 @@ msgid "Map Access Options"
 msgstr "Možnosti prístupu k mape"
 
 msgid "Configure where customers will access the Nabezky map:"
-msgstr "Nakonfigurujte, kde si zákazníci budú môcť zobraziť Na bežky mapu:"
+msgstr "Nakonfigurujte, kde si zákazníci budú môcť zobraziť mapu Na bežky:"
 
 msgid "Direct Access:"
 msgstr "Priamy prístup:"
@@ -277,7 +277,7 @@ msgstr "Kliknite pre kopírovanie"
 
 # Email and voucher strings
 msgid "Your Nabezky Map Access"
-msgstr "Váš prístup k Na bežky mape"
+msgstr "Váš prístup k mape Na bežky"
 
 msgid "Thank you for supporting cross-country skiing!"
 msgstr "Ďakujeme za podporu bežeckého lyžovania!"
@@ -295,22 +295,22 @@ msgid "Processing Your Map Access"
 msgstr "Spracovanie vášho prístupu k mape"
 
 msgid "We are processing your Nabezky map access. You will receive an email shortly with your voucher details."
-msgstr "Spracovávame váš prístup k Na bežky mape. Čoskoro dostanete e-mail s detailmi vášho poukazu."
+msgstr "Spracovávame váš prístup k mape Na bežky. Čoskoro dostanete e-mail s detailmi vášho poukazu."
 
 msgid "Checking status..."
 msgstr "Kontrola stavu..."
 
-msgid "Your Na bežky! map access information"
-msgstr "Bonus: prístup k Na bežky mape"
+msgid "Your Na bežky map access information"
+msgstr "Bonus: prístup k mape Na bežky"
 
-msgid "As a bonus with your purchase, you now have access to the premium Na bežky map with cross-country trails grooming status and other useful information. You can access the map immediately using the button below, or save the details from the email we sent you for later use."
-msgstr "Ako bonus k vášmu nákupu ste získali aj prístup k prémiovej Na bežky mape, zobrazujúcu stav upravenosti bežeckých tratí a ďalšie užitočné informácie. Mapu môžte navštíviť okamžite pomocou tlačidla nižšie, alebo neskôr použitím informácií v e-mail správe, ktorú sme vám poslali."
+msgid "As a bonus with your purchase, you now have access to the premium mapa Na bežky with cross-country trails grooming status and other useful information. You can access the map immediately using the button below, or save the details from the email we sent you for later use."
+msgstr "Ako bonus k vášmu nákupu ste získali aj prístup k prémiovej mape Na bežky, zobrazujúcu stav upravenosti bežeckých tratí a ďalšie užitočné informácie. Mapu môžte navštíviť okamžite pomocou tlačidla nižšie, alebo neskôr použitím informácií v e-mail správe, ktorú sme vám poslali."
 
 msgid "Registered User Bonus!"
 msgstr "Bonus pre registrovaného používateľa!"
 
 msgid "As a nabezky.sk registered user, you have gained access to all premium features including the Nabezky map."
-msgstr "Ako registrovaný používateľ nabezky.sk, získali ste prístup ku všetkým prémiovým funkciám vrátane Na bežky mapy."
+msgstr "Ako registrovaný používateľ nabezky.sk, získali ste prístup ku všetkým prémiovým funkciám vrátane mapy Na bežky."
 
 msgid "Voucher Number:"
 msgstr "Číslo poukazu:"
@@ -375,7 +375,7 @@ msgid "Callback processed successfully"
 msgstr "Callback úspešne spracovaný"
 
 # New email strings
-msgid "This email contains your Na bežky map access details. As a bonus with your purchase, you now have access to the premium map with cross-country trails grooming status and other useful information."
+msgid "This email contains your mapa Na bežky access details. As a bonus with your purchase, you now have access to the premium map with cross-country trails grooming status and other useful information."
 msgstr "Ako bonus k vašej objednávke #%d na stránke %s ste získali aj prístup k prémiovej mape, zobrazujúcu stav upravenosti bežeckých tratí a ďalšie užitočné informácie. %s"
 
 msgid "Your Voucher Information"

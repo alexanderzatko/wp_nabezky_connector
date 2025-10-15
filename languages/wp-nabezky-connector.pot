@@ -296,11 +296,11 @@ msgstr ""
 msgid "Checking status..."
 msgstr ""
 
-msgid "Your Na bežky! map access information"
-msgstr "Bonus: access to Na bežky map"
+msgid "Your Na bežky map access information"
+msgstr "Bonus: access to mapa Na bežky"
 
-msgid "As a bonus with your purchase, you now have access to the premium Na bežky map with cross-country trails grooming status and other useful information. You can access the map immediately using the button below, or save the details from the email we sent you for later use."
-msgstr "As a bonus to your purchase, you have also gained access to the premium Na bežky map, showing the grooming status of cross-country trails and other useful information. You can visit the map immediately using the button below, or later using the information in the email message we sent you."
+msgid "As a bonus with your purchase, you now have access to the premium mapa Na bežky with cross-country trails grooming status and other useful information. You can access the map immediately using the button below, or save the details from the email we sent you for later use."
+msgstr "As a bonus to your purchase, you have also gained access to the premium mapa Na bežky, showing the grooming status of cross-country trails and other useful information. You can visit the map immediately using the button below, or later using the information in the email message we sent you."
 
 msgid "Registered User Bonus!"
 msgstr ""
@@ -371,7 +371,7 @@ msgid "Callback processed successfully"
 msgstr ""
 
 # New email strings
-msgid "This email contains your Na bežky map access details. As a bonus with your purchase, you now have access to the premium map with cross-country trails grooming status and other useful information."
+msgid "This email contains your mapa Na bežky access details. As a bonus with your purchase, you now have access to the premium map with cross-country trails grooming status and other useful information."
 msgstr "As a bonus to your order #%d on %s you have also gained access to the premium map, showing the grooming status of cross-country trails and other useful information. %s"
 
 msgid "Your Voucher Information"
