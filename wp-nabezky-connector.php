@@ -102,6 +102,10 @@ class WP_Nabezky_Connector {
         
         // Add AJAX handlers for connection testing
         add_action('wp_ajax_test_nabezky_connection', array($this, 'ajax_test_connection'));
+        
+        // Add AJAX handlers for frontend status checking
+        add_action('wp_ajax_nabezky_check_status', array($this, 'ajax_check_status'));
+        add_action('wp_ajax_nopriv_nabezky_check_status', array($this, 'ajax_check_status'));
     }
     
     /**
@@ -254,6 +258,18 @@ class WP_Nabezky_Connector {
             WP_NABEZKY_CONNECTOR_VERSION,
             true
         );
+        
+        // Localize frontend script
+        wp_localize_script('wp-nabezky-connector-frontend', 'nabezky_ajax', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('nabezky_check_status'),
+        ));
+        
+        wp_localize_script('wp-nabezky-connector-frontend', 'nabezky_frontend', array(
+            'i18n' => array(
+                'processingLongerExpected' => __('Processing is taking longer than expected. You will receive an email with your voucher information shortly.', 'wp-nabezky-connector'),
+            )
+        ));
         
     }
     
@@ -545,6 +561,10 @@ class WP_Nabezky_Connector {
                 $this->log_error('Empty Vouchers Warning', 'API returned success but vouchers array is empty!');
                 $this->log_error('User Status', 'is_registered_user: ' . ($voucher_data['is_registered_user'] ?? 'unknown') . ', user_uid: ' . ($voucher_data['user_uid'] ?? 'unknown'));
                 $this->log_error('Access Status', 'access_granted: ' . ($voucher_data['access_granted'] ?? 'unknown'));
+                
+                // Treat empty vouchers as failure
+                $this->handle_api_failure($order_data);
+                return;
             }
             
             // Log specific voucher details and process immediately
@@ -557,6 +577,8 @@ class WP_Nabezky_Connector {
             }
         } else {
             $this->log_error('No voucher data found', 'Response structure: ' . json_encode($response_data));
+            $this->handle_api_failure($order_data);
+            return;
         }
         
         $this->log_info('Nabezky API request successful', $response_body);
@@ -596,6 +618,9 @@ class WP_Nabezky_Connector {
         
         // Send fallback email to customer
         $this->send_fallback_email($order_data);
+        
+        // Send admin notification email
+        $this->send_admin_failure_notification($order_data);
     }
     
     /**
@@ -611,6 +636,21 @@ class WP_Nabezky_Connector {
         $message .= '</div>';
         
         wp_mail($order_data['email'], $subject, $message, array('Content-Type: text/html; charset=UTF-8'));
+    }
+    
+    /**
+     * Send admin notification email when voucher generation fails
+     */
+    private function send_admin_failure_notification($order_data) {
+        $subject = __('Vouchers not generated in eshop', 'wp-nabezky-connector');
+        
+        $message = sprintf(
+            __('The vouchers for order %s and buyer email %s were not created and they need to be generated manually.', 'wp-nabezky-connector'),
+            $order_data['order_id'],
+            $order_data['email']
+        );
+        
+        wp_mail('posli@nabezky.sk', $subject, $message);
     }
     
     /**
@@ -936,6 +976,79 @@ class WP_Nabezky_Connector {
         
         // Return JSON response
         wp_send_json($test_result);
+    }
+    
+    /**
+     * AJAX handler for checking voucher status
+     */
+    public function ajax_check_status() {
+        // Verify nonce for security
+        if (!wp_verify_nonce($_GET['nonce'], 'nabezky_check_status')) {
+            wp_die(__('Security check failed', 'wp-nabezky-connector'));
+        }
+        
+        $order_id = intval($_GET['order_id']);
+        
+        if (!$order_id) {
+            wp_send_json_error(array('message' => __('Invalid order ID', 'wp-nabezky-connector')));
+        }
+        
+        $order = wc_get_order($order_id);
+        if (!$order) {
+            wp_send_json_error(array('message' => __('Order not found', 'wp-nabezky-connector')));
+        }
+        
+        // Check if order contains configured Nabezky products
+        $nabezky_products = $this->get_nabezky_products_from_order($order);
+        if (empty($nabezky_products['items'])) {
+            wp_send_json_error(array('message' => __('No Nabezky products in this order', 'wp-nabezky-connector')));
+        }
+        
+        $voucher_data = $order->get_meta('_nabezky_vouchers');
+        
+        if (!empty($voucher_data)) {
+            // Vouchers are available, render them
+            ob_start();
+            $this->render_voucher_info($voucher_data);
+            $html = ob_get_clean();
+            
+            wp_send_json_success(array(
+                'voucher_data' => $voucher_data,
+                'html' => $html
+            ));
+        } else {
+            // Check if this is a failed order
+            global $wpdb;
+            $table_name = $wpdb->prefix . 'nabezky_connector';
+            $status = $wpdb->get_var($wpdb->prepare(
+                "SELECT status FROM $table_name WHERE order_id = %d ORDER BY created_at DESC LIMIT 1",
+                $order_id
+            ));
+            
+            if ($status === 'failed') {
+                // Show failure message
+                $failure_message = sprintf(
+                    __('Immediate processing of your map access was not successful. After setting it up by the administrator, we will contact you', 'wp-nabezky-connector')
+                );
+                
+                $html = '<div class="nabezky-failure" style="background: #f8d7da; border: 1px solid #f5c6cb; padding: 20px; margin: 20px 0; border-radius: 5px;">';
+                $html .= '<h3>' . __('Processing Your Map Access', 'wp-nabezky-connector') . '</h3>';
+                $html .= '<p>' . $failure_message . '</p>';
+                $html .= '</div>';
+                
+                wp_send_json_success(array(
+                    'voucher_data' => null,
+                    'html' => $html,
+                    'failed' => true
+                ));
+            } else {
+                // Still processing
+                wp_send_json_success(array(
+                    'voucher_data' => null,
+                    'timeout' => false
+                ));
+            }
+        }
     }
     
     /**

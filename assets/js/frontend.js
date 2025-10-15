@@ -19,6 +19,10 @@ jQuery(document).ready(function($) {
                         // Update the status display with voucher information
                         $('#nabezky-status-check').html(response.data.html);
                         clearInterval(checkInterval);
+                    } else if (response.data && response.data.failed) {
+                        // Show failure message
+                        $('#nabezky-status-check').html(response.data.html);
+                        clearInterval(checkInterval);
                     } else if (response.data && response.data.timeout) {
                         // Stop checking after timeout
                         $('#nabezky-status-check').html(

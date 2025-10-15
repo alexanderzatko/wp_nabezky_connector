@@ -559,3 +559,19 @@ msgstr "Test připojení selhal s neočekávanou chybou"
 
 msgid "Unexpected error"
 msgstr "Neočekávaná chyba"
+
+# New failure handling strings
+msgid "Vouchers not generated in eshop"
+msgstr "Poukázky nebyly vygenerovány v eshopu"
+
+msgid "The vouchers for order %s and buyer email %s were not created and they need to be generated manually."
+msgstr "Poukázky pro objednávku %s a email kupujícího %s nebyly vytvořeny a musí být vygenerovány ručně."
+
+msgid "Immediate processing of your map access was not successful. After setting it up by the administrator, we will contact you"
+msgstr "Okamžité zpracování vašeho přístupu k mapě nebylo úspěšné. Po jeho nastavení administrátorem vás budeme kontaktovat"
+
+msgid "Invalid order ID"
+msgstr "Neplatné ID objednávky"
+
+msgid "No Nabezky products in this order"
+msgstr "V této objednávce nejsou žádné produkty Nabezky"

@@ -582,3 +582,19 @@ msgstr ""
 
 msgid "Unexpected error"
 msgstr ""
+
+# New failure handling strings
+msgid "Vouchers not generated in eshop"
+msgstr ""
+
+msgid "The vouchers for order %s and buyer email %s were not created and they need to be generated manually."
+msgstr ""
+
+msgid "Immediate processing of your map access was not successful. After setting it up by the administrator, we will contact you"
+msgstr ""
+
+msgid "Invalid order ID"
+msgstr ""
+
+msgid "No Nabezky products in this order"
+msgstr ""
