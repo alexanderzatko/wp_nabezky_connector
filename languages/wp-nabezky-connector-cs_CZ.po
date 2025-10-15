@@ -1,8 +1,8 @@
-# Copyright (C) 2024 Na bezky!
-# This file is distributed under the same license as the WP Na bezky! Connector plugin.
+# Copyright (C) 2025 Na Bežky
+# This file is distributed under the same license as the Mapa Na Bežky pre WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Na bezky! Connector 1.0.0\n"
+"Project-Id-Version: Mapa Na Bežky pre WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://nabezky.sk\n"
 "POT-Creation-Date: 2024-01-01 12:00+0000\n"
 "MIME-Version: 1.0\n"
@@ -17,11 +17,14 @@ msgstr ""
 "X-Domain: wp-nabezky-connector\n"
 
 # Plugin header
-msgid "WP Na bezky! Connector"
-msgstr "WP Na bezky! Připojovací modul"
+msgid "Na Bežky Map for WooCommerce"
+msgstr "Mapa Na Bežky pro WooCommerce"
 
-msgid "Na bezky! Connector"
-msgstr "Na bezky! Připojovací modul"
+msgid "Na Bežky Map"
+msgstr "Mapa Na Bežky"
+
+msgid "Enables automatic assignment of access to the Na Bežky map for selected WooCommerce products"
+msgstr "Umožňuje automatické přiřazení přístupu k mapě Na Bežky pro vybrané produkty ve WooCommerce"
 
 msgid "Settings"
 msgstr "Nastavení"

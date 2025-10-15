@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name: WP Na bezky! Connector
+ * Plugin Name: Na Bežky Map for WooCommerce
  * Plugin URI: https://nabezky.sk
- * Description: A WordPress plugin to integrate WooCommerce with Nabezky trail map system
+ * Description: Enables automatic assignment of access to the Na Bežky map for selected WooCommerce products
  * Version: 1.0.0
- * Author: Na bezky!
+ * Author: Na Bežky
  * Author URI: https://nabezky.sk
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -157,8 +157,8 @@ class WP_Nabezky_Connector {
      */
     public function add_admin_menu() {
         add_options_page(
-            __('WP Na bezky! Connector', 'wp-nabezky-connector'),
-            __('Na bezky! Connector', 'wp-nabezky-connector'),
+            __('Na Bežky Map for WooCommerce', 'wp-nabezky-connector'),
+            __('Na Bežky Map', 'wp-nabezky-connector'),
             'manage_options',
             'wp-nabezky-connector',
             array($this, 'admin_page')
