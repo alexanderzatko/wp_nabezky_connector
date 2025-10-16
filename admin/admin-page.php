@@ -178,9 +178,9 @@ if (class_exists('WooCommerce')) {
         <div class="card">
             <h3><?php _e('How it works', 'wp-nabezky-connector'); ?></h3>
             <ol>
-                <li><?php _e('Customer completes a WooCommerce order containing configured Nabezky products', 'wp-nabezky-connector'); ?></li>
+                <li><?php _e('Customer completes a WooCommerce order containing configured products marked on plugin settings page', 'wp-nabezky-connector'); ?></li>
                 <li><?php _e('Plugin sends order details to Nabezky API for voucher generation', 'wp-nabezky-connector'); ?></li>
-                <li><?php _e('Nabezky generates vouchers and sends callback with voucher information', 'wp-nabezky-connector'); ?></li>
+                <li><?php _e('Nabezky generates vouchers and sends voucher numbers back to the plugin', 'wp-nabezky-connector'); ?></li>
                 <li><?php _e('Customer receives voucher information via email and on the thank you page', 'wp-nabezky-connector'); ?></li>
                 <li><?php _e('Customer can use voucher numbers to access the Nabezky interactive map', 'wp-nabezky-connector'); ?></li>
             </ol>
@@ -190,19 +190,10 @@ if (class_exists('WooCommerce')) {
             <h3><?php _e('Voucher Types', 'wp-nabezky-connector'); ?></h3>
             <ul>
                 <li><strong><?php _e('Seasonal Vouchers:', 'wp-nabezky-connector'); ?></strong> <?php _e('Generated when order value >= Season Pass Price. Valid until end of ski season.', 'wp-nabezky-connector'); ?></li>
-                <li><strong><?php _e('3-Day Vouchers:', 'wp-nabezky-connector'); ?></strong> <?php _e('Generated when order value < Season Pass Price. Valid for 3 days from generation.', 'wp-nabezky-connector'); ?></li>
+                <li><strong><?php _e('3-Day Vouchers:', 'wp-nabezky-connector'); ?></strong> <?php _e('Generated when order value < Season Pass Price. Valid for 3 days from first use.', 'wp-nabezky-connector'); ?></li>
                 <li><strong><?php _e('Registered User Access:', 'wp-nabezky-connector'); ?></strong> <?php _e('If customer is registered in Nabezky, they get access to all premium features.', 'wp-nabezky-connector'); ?></li>
             </ul>
         </div>
         
-        
-        <div class="card">
-            <h3><?php _e('Map Access Options', 'wp-nabezky-connector'); ?></h3>
-            <p><?php _e('Configure where customers will access the Nabezky map:', 'wp-nabezky-connector'); ?></p>
-            <ul>
-                <li><strong><?php _e('Direct Access:', 'wp-nabezky-connector'); ?></strong> <?php _e('Link to mapa.nabezky.sk with voucher parameters', 'wp-nabezky-connector'); ?></li>
-                <li><strong><?php _e('Embedded Access:', 'wp-nabezky-connector'); ?></strong> <?php _e('Link to your own embedded iframe with proper authentication', 'wp-nabezky-connector'); ?></li>
-            </ul>
-        </div>
     </div>
 </div>

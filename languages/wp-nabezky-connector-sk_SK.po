@@ -100,14 +100,14 @@ msgstr "Informácie o module"
 msgid "How it works"
 msgstr "Ako to funguje"
 
-msgid "Customer completes a WooCommerce order containing configured Nabezky products"
-msgstr "Zákazník dokončí WooCommerce objednávku obsahujúcu nakonfigurované Na bežky produkty"
+msgid "Customer completes a WooCommerce order containing configured products marked on plugin settings page"
+msgstr "Zákazník dokončí WooCommerce objednávku obsahujúcu nakonfigurované produkty označené na stránke nastavení doplnku"
 
 msgid "Plugin sends order details to Nabezky API for voucher generation"
 msgstr "Modul pošle detaily objednávky do Na bežky API na generovanie poukazov"
 
-msgid "Nabezky generates vouchers and sends callback with voucher information"
-msgstr "Na bežky vygeneruje poukazy a pošle callback s informáciami o poukazoch"
+msgid "Nabezky generates vouchers and sends voucher numbers back to the plugin"
+msgstr "Na bežky vygeneruje poukazy a pošle ich čísla späť do doplnku"
 
 msgid "Customer receives voucher information via email and on the thank you page"
 msgstr "Zákazník dostane informácie o poukazoch e-mailom a na stránke ďakujeme"
@@ -127,8 +127,8 @@ msgstr "Generované, keď hodnota objednávky >= cena sezónnej permanentky. Pla
 msgid "3-Day Vouchers:"
 msgstr "3-dňové poukazy:"
 
-msgid "Generated when order value < Season Pass Price. Valid for 3 days from generation."
-msgstr "Generované, keď hodnota objednávky < cena sezónnej permanentky. Platné 3 dni od generovania."
+msgid "Generated when order value < Season Pass Price. Valid for 3 days from first use."
+msgstr "Generované, keď hodnota objednávky < cena sezónnej permanentky. Platné 3 dni od okamihu prvého použitia."
 
 msgid "Registered User Access:"
 msgstr "Prístup registrovaného používateľa:"
@@ -172,23 +172,6 @@ msgstr "Konfigurácia produktov"
 msgid "Select which WooCommerce products should trigger Nabezky voucher generation when purchased. Only orders containing these products will be processed."
 msgstr "Vyberte, ktoré WooCommerce produkty by mali spustiť generovanie Nabezky poukazov pri kúpe. Budú spracované len objednávky obsahujúce tieto produkty."
 
-msgid "Map Access Options"
-msgstr "Možnosti prístupu k mape"
-
-msgid "Configure where customers will access the Nabezky map:"
-msgstr "Nakonfigurujte, kde si zákazníci budú môcť zobraziť mapu Na bežky:"
-
-msgid "Direct Access:"
-msgstr "Priamy prístup:"
-
-msgid "Link to mapa.nabezky.sk with voucher parameters"
-msgstr "Odkaz na mapa.nabezky.sk s parametrami poukazu"
-
-msgid "Embedded Access:"
-msgstr "Vložený prístup:"
-
-msgid "Link to your own embedded iframe with proper authentication"
-msgstr "Odkaz na váš vlastný vložený iframe so správnou autentifikáciou"
 
 msgid "WooCommerce Integration"
 msgstr "WooCommerce integrácia"

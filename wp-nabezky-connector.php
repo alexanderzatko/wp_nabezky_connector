@@ -34,6 +34,16 @@ class WP_Nabezky_Connector {
     private static $instance = null;
     
     /**
+     * Whether plugin has been initialized
+     */
+    private $is_initialized = false;
+    
+    /**
+     * Whether frontend has been initialized
+     */
+    private $frontend_initialized = false;
+    
+    /**
      * Get plugin instance
      */
     public static function get_instance() {
@@ -66,7 +76,10 @@ class WP_Nabezky_Connector {
      * Initialize plugin
      */
     public function init() {
-        $this->log_info('Plugin initialization started', 'Version: ' . WP_NABEZKY_CONNECTOR_VERSION);
+        // Only log initialization on first run
+        if (!$this->is_initialized) {
+            $this->log_info('Plugin initialization started', 'Version: ' . WP_NABEZKY_CONNECTOR_VERSION);
+        }
         
         // Load text domain for translations
         load_plugin_textdomain('wp-nabezky-connector', false, dirname(plugin_basename(__FILE__)) . '/languages');
@@ -83,8 +96,11 @@ class WP_Nabezky_Connector {
         // Initialize REST API endpoints
         $this->init_rest_api();
         
-        
-        $this->log_info('Plugin initialization completed', 'All systems initialized');
+        // Only log completion on first run
+        if (!$this->is_initialized) {
+            $this->log_info('Plugin initialization completed', 'All systems initialized');
+            $this->is_initialized = true;
+        }
     }
     
     /**
@@ -117,7 +133,10 @@ class WP_Nabezky_Connector {
         
         // Add WooCommerce hooks
         if (class_exists('WooCommerce')) {
-            $this->log_info('WooCommerce detected, registering hooks', 'Hook registration starting');
+            // Only log on first initialization
+            if (!$this->frontend_initialized) {
+                $this->log_info('WooCommerce detected, registering hooks', 'Hook registration starting');
+            }
             
             // Register for order completion - use only one hook to prevent double processing
             add_action('woocommerce_order_status_completed', array($this, 'handle_order_completion'));
@@ -127,9 +146,17 @@ class WP_Nabezky_Connector {
             // Add a general order status change hook for debugging
             add_action('woocommerce_order_status_changed', array($this, 'log_order_status_change'), 10, 3);
             
-            $this->log_info('WooCommerce hooks registered successfully', 'Multiple order completion handlers attached');
+            // Only log completion on first initialization
+            if (!$this->frontend_initialized) {
+                $this->log_info('WooCommerce hooks registered successfully', 'Multiple order completion handlers attached');
+                $this->frontend_initialized = true;
+            }
         } else {
-            $this->log_error('WooCommerce not detected', 'Cannot register order completion hooks');
+            // Only log error on first initialization
+            if (!$this->frontend_initialized) {
+                $this->log_error('WooCommerce not detected', 'Cannot register order completion hooks');
+                $this->frontend_initialized = true;
+            }
         }
         
         // Add shortcodes

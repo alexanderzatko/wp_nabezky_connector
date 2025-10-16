@@ -96,13 +96,13 @@ msgstr ""
 msgid "How it works"
 msgstr ""
 
-msgid "Customer completes a WooCommerce order containing configured Nabezky products"
+msgid "Customer completes a WooCommerce order containing configured products marked on plugin settings page"
 msgstr ""
 
 msgid "Plugin sends order details to Nabezky API for voucher generation"
 msgstr ""
 
-msgid "Nabezky generates vouchers and sends callback with voucher information"
+msgid "Nabezky generates vouchers and sends voucher numbers back to the plugin"
 msgstr ""
 
 msgid "Customer receives voucher information via email and on the thank you page"
@@ -123,7 +123,7 @@ msgstr ""
 msgid "3-Day Vouchers:"
 msgstr ""
 
-msgid "Generated when order value < Season Pass Price. Valid for 3 days from generation."
+msgid "Generated when order value < Season Pass Price. Valid for 3 days from first use."
 msgstr ""
 
 msgid "Registered User Access:"
@@ -168,23 +168,6 @@ msgstr ""
 msgid "Select which WooCommerce products should trigger Nabezky voucher generation when purchased. Only orders containing these products will be processed."
 msgstr ""
 
-msgid "Map Access Options"
-msgstr ""
-
-msgid "Configure where customers will access the Nabezky map:"
-msgstr ""
-
-msgid "Direct Access:"
-msgstr ""
-
-msgid "Link to mapa.nabezky.sk with voucher parameters"
-msgstr ""
-
-msgid "Embedded Access:"
-msgstr ""
-
-msgid "Link to your own embedded iframe with proper authentication"
-msgstr ""
 
 msgid "WooCommerce Integration"
 msgstr ""
