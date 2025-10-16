@@ -8,6 +8,41 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+// Handle manual data cleanup
+if (isset($_POST['manual_cleanup']) && wp_verify_nonce($_POST['nabezky_cleanup_nonce'], 'nabezky_manual_cleanup')) {
+    if (!current_user_can('manage_options')) {
+        wp_die(__('You do not have sufficient permissions to access this page.'));
+    }
+    
+    global $wpdb;
+    $cleanup_order_data = isset($_POST['cleanup_order_data']);
+    
+    // Remove database table
+    $table_name = $wpdb->prefix . 'nabezky_connector';
+    $wpdb->query("DROP TABLE IF EXISTS {$table_name}");
+    
+    // Remove plugin options (but keep current settings for the form)
+    // delete_option('wp_nabezky_connector_options'); // Commented out to preserve settings
+    
+    // Remove order metadata if requested
+    if ($cleanup_order_data) {
+        $deleted_vouchers = $wpdb->delete($wpdb->postmeta, array('meta_key' => '_nabezky_vouchers'), array('%s'));
+        $deleted_processed = $wpdb->delete($wpdb->postmeta, array('meta_key' => '_nabezky_processed'), array('%s'));
+        $deleted_request_ids = $wpdb->delete($wpdb->postmeta, array('meta_key' => '_nabezky_request_id'), array('%s'));
+        
+        echo '<div class="notice notice-success"><p>' . 
+             sprintf(__('Manual cleanup completed. Removed: %d voucher records, %d processed records, %d request ID records.', 'wp-nabezky-connector'), 
+                     $deleted_vouchers, $deleted_processed, $deleted_request_ids) . '</p></div>';
+    } else {
+        echo '<div class="notice notice-success"><p>' . 
+             __('Manual cleanup completed. Database table removed, order metadata preserved.', 'wp-nabezky-connector') . '</p></div>';
+    }
+    
+    // Remove transients
+    $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_wp_nabezky_%'");
+    $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_timeout_wp_nabezky_%'");
+}
+
 // Handle test order completion
 if (isset($_POST['test_order_completion']) && !empty($_POST['test_order_id'])) {
     $test_order_id = intval($_POST['test_order_id']);
@@ -32,6 +67,7 @@ if (isset($_POST['submit'])) {
         'nabezky_products' => array_map('intval', $_POST['nabezky_products'] ?? array()),
         'default_region_id' => intval($_POST['default_region_id'] ?? 1),
         'enabled' => isset($_POST['enabled']) ? 1 : 0,
+        'remove_data_on_uninstall' => isset($_POST['remove_data_on_uninstall']) ? 1 : 0,
     );
     
     update_option('wp_nabezky_connector_options', $options);
@@ -165,6 +201,24 @@ if (class_exists('WooCommerce')) {
                     <p class="description"><?php _e('Enable automatic voucher generation when WooCommerce orders are completed', 'wp-nabezky-connector'); ?></p>
                 </td>
             </tr>
+            
+            <tr>
+                <th scope="row">
+                    <label for="remove_data_on_uninstall"><?php _e('Data Retention', 'wp-nabezky-connector'); ?></label>
+                </th>
+                <td>
+                    <input type="checkbox" 
+                           id="remove_data_on_uninstall" 
+                           name="remove_data_on_uninstall" 
+                           value="1" 
+                           <?php checked($options['remove_data_on_uninstall'] ?? false, 1); ?> />
+                    <label for="remove_data_on_uninstall"><?php _e('Remove all plugin data when uninstalling', 'wp-nabezky-connector'); ?></label>
+                    <p class="description">
+                        <?php _e('When enabled: All plugin data (vouchers, order metadata, database tables) will be permanently deleted when the plugin is uninstalled.', 'wp-nabezky-connector'); ?><br>
+                        <?php _e('When disabled (default): Plugin files will be removed but order voucher data will be preserved for historical records and customer support.', 'wp-nabezky-connector'); ?>
+                    </p>
+                </td>
+            </tr>
         </table>
         
         <?php submit_button(__('Save Settings', 'wp-nabezky-connector')); ?>
@@ -193,6 +247,26 @@ if (class_exists('WooCommerce')) {
                 <li><strong><?php _e('3-Day Vouchers:', 'wp-nabezky-connector'); ?></strong> <?php _e('Generated when order value < Season Pass Price. Valid for 3 days from first use.', 'wp-nabezky-connector'); ?></li>
                 <li><strong><?php _e('Registered User Access:', 'wp-nabezky-connector'); ?></strong> <?php _e('If customer is registered in Nabezky, they get access to all premium features.', 'wp-nabezky-connector'); ?></li>
             </ul>
+        </div>
+        
+        <hr style="margin: 30px 0;">
+        
+        <h2><?php _e('Plugin Management', 'wp-nabezky-connector'); ?></h2>
+        
+        <div class="card" style="background: #fff3cd; border-left: 4px solid #ffc107;">
+            <h3><?php _e('Manual Data Cleanup', 'wp-nabezky-connector'); ?></h3>
+            <p><?php _e('You can manually remove plugin data without uninstalling the plugin. This is useful for testing or if you want to clean up old data while keeping the plugin active.', 'wp-nabezky-connector'); ?></p>
+            <form method="post" action="" onsubmit="return confirm('<?php _e('Are you sure you want to remove all plugin data? This action cannot be undone.', 'wp-nabezky-connector'); ?>')">
+                <?php wp_nonce_field('nabezky_manual_cleanup', 'nabezky_cleanup_nonce'); ?>
+                <label>
+                    <input type="checkbox" name="cleanup_order_data" value="1" />
+                    <?php _e('Also remove order metadata (voucher data)', 'wp-nabezky-connector'); ?>
+                </label>
+                <br><br>
+                <button type="submit" name="manual_cleanup" class="button button-secondary" style="background: #dc3545; color: white; border-color: #dc3545;">
+                    <?php _e('Clean Up Plugin Data', 'wp-nabezky-connector'); ?>
+                </button>
+            </form>
         </div>
         
     </div>

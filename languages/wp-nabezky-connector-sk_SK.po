@@ -545,3 +545,41 @@ msgstr "Test pripojenia zlyhal s neočakávanou chybou"
 
 msgid "Unexpected error"
 msgstr "Neočakávaná chyba"
+
+# Data Retention strings
+msgid "Data Retention"
+msgstr "Uchovávanie údajov"
+
+msgid "Remove all plugin data when uninstalling"
+msgstr "Odstrániť všetky údaje pluginu pri odinštalovaní"
+
+msgid "When enabled: All plugin data (vouchers, order metadata, database tables) will be permanently deleted when the plugin is uninstalled."
+msgstr "Ak je zapnuté: Všetky údaje pluginu (poukazy, metadáta objednávok, databázové tabuľky) budú trvalo odstránené pri odinštalovaní pluginu."
+
+msgid "When disabled (default): Plugin files will be removed but order voucher data will be preserved for historical records and customer support."
+msgstr "Ak je vypnuté (predvolené): Súbory pluginu budú odstránené, ale údaje o poukazoch v objednávkach budú zachované pre historické záznamy a zákaznícku podporu."
+
+# Plugin Management strings
+msgid "Plugin Management"
+msgstr "Správa pluginu"
+
+msgid "Manual Data Cleanup"
+msgstr "Manuálne vyčistenie údajov"
+
+msgid "You can manually remove plugin data without uninstalling the plugin. This is useful for testing or if you want to clean up old data while keeping the plugin active."
+msgstr "Môžete manuálne odstrániť údaje pluginu bez odinštalovania pluginu. To je užitočné pre testovanie alebo ak chcete vyčistiť staré údaje pri zachovaní aktívneho pluginu."
+
+msgid "Are you sure you want to remove all plugin data? This action cannot be undone."
+msgstr "Ste si istí, že chcete odstrániť všetky údaje pluginu? Táto akcia sa nedá vrátiť späť."
+
+msgid "Also remove order metadata (voucher data)"
+msgstr "Tiež odstrániť metadáta objednávok (údaje o poukazoch)"
+
+msgid "Clean Up Plugin Data"
+msgstr "Vyčistiť údaje pluginu"
+
+msgid "Manual cleanup completed. Removed: %d voucher records, %d processed records, %d request ID records."
+msgstr "Manuálne vyčistenie dokončené. Odstránené: %d záznamov o poukazoch, %d spracovaných záznamov, %d záznamov ID požiadaviek."
+
+msgid "Manual cleanup completed. Database table removed, order metadata preserved."
+msgstr "Manuálne vyčistenie dokončené. Databázová tabuľka odstránená, metadáta objednávok zachované."

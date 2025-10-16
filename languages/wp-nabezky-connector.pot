@@ -584,3 +584,41 @@ msgstr ""
 
 msgid "No Nabezky products in this order"
 msgstr ""
+
+# Data Retention strings
+msgid "Data Retention"
+msgstr ""
+
+msgid "Remove all plugin data when uninstalling"
+msgstr ""
+
+msgid "When enabled: All plugin data (vouchers, order metadata, database tables) will be permanently deleted when the plugin is uninstalled."
+msgstr ""
+
+msgid "When disabled (default): Plugin files will be removed but order voucher data will be preserved for historical records and customer support."
+msgstr ""
+
+# Plugin Management strings
+msgid "Plugin Management"
+msgstr ""
+
+msgid "Manual Data Cleanup"
+msgstr ""
+
+msgid "You can manually remove plugin data without uninstalling the plugin. This is useful for testing or if you want to clean up old data while keeping the plugin active."
+msgstr ""
+
+msgid "Are you sure you want to remove all plugin data? This action cannot be undone."
+msgstr ""
+
+msgid "Also remove order metadata (voucher data)"
+msgstr ""
+
+msgid "Clean Up Plugin Data"
+msgstr ""
+
+msgid "Manual cleanup completed. Removed: %d voucher records, %d processed records, %d request ID records."
+msgstr ""
+
+msgid "Manual cleanup completed. Database table removed, order metadata preserved."
+msgstr ""
