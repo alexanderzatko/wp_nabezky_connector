@@ -1,0 +1,90 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # Triggers on version tags like v1.0.0, v1.1.0, etc.
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+        
+    - name: Extract version from plugin file
+      id: get_version
+      run: |
+        VERSION=$(grep "Version:" wp-nabezky-connector.php | sed 's/.*Version: *//' | tr -d ' ')
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "Plugin version: $VERSION"
+        
+    - name: Validate version matches tag
+      run: |
+        TAG_VERSION=${GITHUB_REF#refs/tags/v}
+        PLUGIN_VERSION=${{ steps.get_version.outputs.version }}
+        if [ "$TAG_VERSION" != "$PLUGIN_VERSION" ]; then
+          echo "Error: Tag version ($TAG_VERSION) does not match plugin version ($PLUGIN_VERSION)"
+          exit 1
+        fi
+        echo "Version validation passed: $TAG_VERSION"
+        
+    - name: Create release directory
+      run: |
+        mkdir -p release/wp-nabezky-connector
+        
+    - name: Copy plugin files
+      run: |
+        # Copy main files
+        cp wp-nabezky-connector.php release/wp-nabezky-connector/
+        cp uninstall.php release/wp-nabezky-connector/
+        cp README.md release/wp-nabezky-connector/
+        
+        # Copy directories
+        cp -r admin release/wp-nabezky-connector/
+        cp -r includes release/wp-nabezky-connector/
+        cp -r assets release/wp-nabezky-connector/
+        cp -r languages release/wp-nabezky-connector/
+        
+    - name: Create zip file
+      run: |
+        cd release
+        zip -r "../wp-nabezky-connector-${{ steps.get_version.outputs.version }}.zip" wp-nabezky-connector -x "*.DS_Store" "*.git*" "*.svn*" "*~" "*.tmp"
+        cd ..
+        
+    - name: Display zip file info
+      run: |
+        ls -la wp-nabezky-connector-*.zip
+        echo "Zip file size: $(du -h wp-nabezky-connector-*.zip | cut -f1)"
+        
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: wp-nabezky-connector-*.zip
+        name: Release ${{ github.ref_name }}
+        tag_name: ${{ github.ref_name }}
+        body: |
+          ## WP Na bežky Connector ${{ steps.get_version.outputs.version }}
+          
+          ### Installation
+          1. Download the zip file below
+          2. Go to your WordPress admin → Plugins → Add New → Upload Plugin
+          3. Choose the downloaded zip file and click "Install Now"
+          4. Activate the plugin
+          5. Go to Settings → Na Bežky Map to configure
+          
+          ### Changes in this version
+          - See the commit history for detailed changes
+          
+          ### Support
+          For support and questions, please contact the plugin author.
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
